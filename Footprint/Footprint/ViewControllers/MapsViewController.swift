@@ -15,8 +15,10 @@ class MapsViewController: UIViewController {
     
     var selectedPlace:GMSPlace!
     
-    func updateMap() {
-        let camera = GMSCameraPosition.camera(withLatitude: selectedPlace.coordinate.latitude, longitude: selectedPlace.coordinate.longitude, zoom: 6.0)
+    override func loadView() {
+        super.loadView()
+        let camera = GMSCameraPosition.camera(withLatitude: 33.8162219, longitude: -117.9224731, zoom: 6.0)
+        // let camera = GMSCameraPosition.camera(withLatitude: selectedPlace.coordinate.latitude, longitude: selectedPlace.coordinate.longitude, zoom: 6.0)
         let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: 100, height: 100), camera: camera)
         self.view = mapView
 
@@ -24,7 +26,8 @@ class MapsViewController: UIViewController {
         let google_url = GoogleMapsAPI.fetchDirectionURL(
             key: "AIzaSyDVuFQ5aAu0kEucO1FM09CaC7eUvLkbxvg",
             origin: "Disneyland",
-            destination: selectedPlace.name!)
+            destination: "Universal Studios Hollywood")
+            //destination: selectedPlace.name!)
 
         AF.request(google_url, method: .post, encoding: JSONEncoding.default).responseJSON {
             response in
@@ -55,11 +58,6 @@ class MapsViewController: UIViewController {
                 bounds = bounds.includingCoordinate(path.coordinate(at: index))
             }
         }
-
-    }
-    
-    override func loadView() {
-        super.loadView()
         self.makeButton()
     }
     
@@ -102,7 +100,7 @@ extension MapsViewController: GMSAutocompleteViewControllerDelegate {
         print("Place attributions: \(place.attributions)")
         dismiss(animated: true, completion: nil)
         self.selectedPlace = place
-        updateMap()
+        // updateMap()
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
