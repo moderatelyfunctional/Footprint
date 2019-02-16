@@ -14,12 +14,11 @@ class AutoButton: UIButton {
     let pressedTitleColor:UIColor
     
     init(text: String, titleColor: UIColor, backgroundColor: UIColor) {
-        self.titleColor = titleColor
-        self.pressedTitleColor = titleColor.darker(10)
+        self.titleColor = backgroundColor
+        self.pressedTitleColor = backgroundColor.darker(by: 10)!
 
         super.init(frame: CGRect.zero)
         self.translatesAutoresizingMaskIntoConstraints = false
-        
         
         self.setTitle(text, for: .normal)
         self.setTitleColor(titleColor, for: .normal)
@@ -33,7 +32,7 @@ class AutoButton: UIButton {
     
     override open var isHighlighted: Bool {
         didSet {
-            backgroundColor = isHighlighted ? self.titleColor : self.pressedTitleColor
+            backgroundColor = isHighlighted ? self.pressedTitleColor : self.titleColor
         }
     }
 
