@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
         
         setupBackground()
         setupTitle()
+        setupButtons()
     }
 
     func setupBackground() {
@@ -41,5 +42,14 @@ class LoginViewController: UIViewController {
         self.view.addConstraint(FLayoutConstraint.horizontalAlignConstraint(firstView: self.view, secondView: loginLabel))
     }
 
+    func setupButtons() {
+        let loginButton = AutoButton(text: "Log In", titleColor: UIColor.white, backgroundColor: LoginVC.primaryGreen)
+        
+        self.view.addSubview(loginButton)
+        
+        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: loginButton, sides: [.left, .right, .bottom], padding: 40))
+        self.view.addConstraint(FLayoutConstraint.constantConstraint(view: loginButton, attribute: .height, value: 40))
+    }
+    
 }
 
