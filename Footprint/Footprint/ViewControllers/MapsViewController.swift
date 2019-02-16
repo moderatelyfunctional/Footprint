@@ -14,7 +14,7 @@ class MapsViewController: UIViewController {
     override func loadView() {
         // Create a GMSCameraPosition that tells the map to display the
         // coordinate -33.86,151.20 at zoom level 6.
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
+        let camera = GMSCameraPosition.camera(withLatitude: 33.8162219, longitude: -117.9224731, zoom: 6.0)
         let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: 100, height: 100), camera: camera)
         self.view = mapView
         
@@ -27,7 +27,16 @@ class MapsViewController: UIViewController {
         
         // polylines
         let encodedPoints = "kvkmElvvnU\\J"
+        let path: GMSPath = GMSPath(fromEncodedPath: encodedPoints)!
+        let routePolyline = GMSPolyline(path: path)
+        routePolyline.map = mapView
         
+        var bounds = GMSCoordinateBounds()
+        
+        for index in 1...path.count() {
+            bounds = bounds.includingCoordinate(path.coordinate(at: index))
+        }
+        mapView.animate(with: GMSCameraUpdate.fit(bounds))
         
         let topView = UIView(frame: CGRect(x: 0, y: 1, width: 100, height: 100))
         topView.backgroundColor = UIColor.red
