@@ -1,66 +1,21 @@
 //
-//  MapsViewController.swift
+//  PlacesViewController.swift
 //  Footprint
 //
 //  Created by Jing Lin on 2/16/19.
 //  Copyright © 2019 Jing Lin. All rights reserved.
 //
 
+import Foundation
 import UIKit
-import GoogleMaps
 import GooglePlaces
-import Alamofire
 
-class MapsViewController: UIViewController {
+class PlacesViewController: UIViewController {
     
-    var selectedPlace:GMSPlace!
+    var selectedPlace: GMSPlace!
     
-    func updateMap() {
-        let camera = GMSCameraPosition.camera(withLatitude: selectedPlace.coordinate.latitude, longitude: selectedPlace.coordinate.longitude, zoom: 6.0)
-        let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: 100, height: 100), camera: camera)
-        self.view = mapView
-
-        // Request for Directions
-        let google_url = GoogleMapsAPI.fetchDirectionURL(
-            key: "AIzaSyDVuFQ5aAu0kEucO1FM09CaC7eUvLkbxvg",
-            origin: "Disneyland",
-            destination: selectedPlace.name!)
-
-        AF.request(google_url, method: .post, encoding: JSONEncoding.default).responseJSON {
-            response in
-            print(response.request)
-
-            debugPrint(response)
-
-            let directions = try? JSONDecoder().decode(Directions.self, from: response.data!)
-
-            debugPrint(directions)
-
-            // Creates a marker in the center of the map.
-            let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2D(latitude: (directions?.routes[0].legs[0].start_location.lat)!, longitude: (directions?.routes[0].legs[0].start_location.lng)!)
-            marker.title = directions?.routes[0].legs[0].start_address
-            //            marker.snippet = "Australia"
-            marker.map = mapView
-
-            var bounds = GMSCoordinateBounds()
-            let path: GMSPath = GMSPath(fromEncodedPath: (directions?.routes[0].overview_polyline.points)!)!
-            let routePolyline = GMSPolyline(path: path)
-            routePolyline.strokeWidth = 10
-            routePolyline.strokeColor = UIColor.red
-
-            routePolyline.map = mapView
-
-            for index in 1...path.count() {
-                bounds = bounds.includingCoordinate(path.coordinate(at: index))
-            }
-        }
-
-    }
-    
-    override func loadView() {
-        super.loadView()
-        self.makeButton()
+    override func viewDidLoad() {
+        makeButton()
     }
     
     // Present the Autocomplete view controller when the button is pressed.
@@ -74,9 +29,9 @@ class MapsViewController: UIViewController {
         autocompleteController.placeFields = fields
         
         // Specify a filter.
-        //        let filter = GMSAutocompleteFilter()
-        //        filter.type = .address
-        //        autocompleteController.autocompleteFilter = filter
+//        let filter = GMSAutocompleteFilter()
+//        filter.type = .address
+//        autocompleteController.autocompleteFilter = filter
         
         // Display the autocomplete view controller.
         present(autocompleteController, animated: true, completion: nil)
@@ -93,7 +48,7 @@ class MapsViewController: UIViewController {
     
 }
 
-extension MapsViewController: GMSAutocompleteViewControllerDelegate {
+extension PlacesViewController: GMSAutocompleteViewControllerDelegate {
     
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
@@ -102,7 +57,6 @@ extension MapsViewController: GMSAutocompleteViewControllerDelegate {
         print("Place attributions: \(place.attributions)")
         dismiss(animated: true, completion: nil)
         self.selectedPlace = place
-        updateMap()
     }
     
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
@@ -125,4 +79,3 @@ extension MapsViewController: GMSAutocompleteViewControllerDelegate {
     }
     
 }
-

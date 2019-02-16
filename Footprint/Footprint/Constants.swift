@@ -21,3 +21,4 @@ struct UserInfo {
     static var userID:Int = -1
     
 }
+
