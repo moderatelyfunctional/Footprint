@@ -20,7 +20,7 @@ class AutoTextField: UITextField {
             self.isSecureTextEntry = true
         }
 
-        self.autocorrectionType = UITextAutocorrectionTypeNo;
+        self.autocorrectionType = UITextAutocorrectionType.no;
         self.placeholder = placeholder
         self.backgroundColor = backgroundColor   
     }
