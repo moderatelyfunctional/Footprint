@@ -10,8 +10,8 @@ import UIKit
 
 class LoginFields: UIView {
     
-    let emailField = AutoTextField(placeholder: "Email" textColor: UIColor.black, backgroundColor: UIColor.white)
-    let passwordField = AutoTextField(placeholder: "Password" textColor: UIColor.black, backgroundColor: UIColor.white)
+    let emailField = AutoTextField(placeholder: "Email", textColor: UIColor.black, backgroundColor: UIColor.white)
+    let passwordField = AutoTextField(placeholder: "Password", textColor: UIColor.black, backgroundColor: UIColor.white)
     let loginButton = AutoButton(text: "Log In", titleColor: UIColor.white, backgroundColor: LoginVC.primaryGreen)
 
     init() {
@@ -29,14 +29,14 @@ class LoginFields: UIView {
     }
         
     func addConstraints() {
-        self.view.addConstraint(FLayoutConstraint.paddingPositionConstraint(view: emailField, side: .top, padding: 0))
-        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: emailField, sides: [.left, .right], padding: 40))
-        self.view.addConstraint(FLayoutConstraint.verticalSpacingConstraint(upperView: emailField, lowerView: passwordField, spacing: 10))
+        self.addConstraint(FLayoutConstraint.paddingPositionConstraint(view: emailField, side: .top, padding: 0))
+        self.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: emailField, sides: [.left, .right], padding: 40))
+        self.addConstraint(FLayoutConstraint.verticalSpacingConstraint(upperView: emailField, lowerView: passwordField, spacing: 10))
         
-        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: passwordField, sides: [.left, .right], padding: 40))
-        self.view.addConstraint(FLayoutConstraint.verticalSpacingConstraint(upperView: passwordField, lowerView: loginButton, spacing: 50))
+        self.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: passwordField, sides: [.left, .right], padding: 40))
+        self.addConstraint(FLayoutConstraint.verticalSpacingConstraint(upperView: passwordField, lowerView: loginButton, spacing: 50))
         
-        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: loginButton, sides: [.left, .right, .bottom], padding: 40))
-        self.view.addConstraint(FLayoutConstraint.constantConstraint(view: loginButton, attribute: .height, value: 40))
+        self.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: loginButton, sides: [.left, .right, .bottom], padding: 40))
+        self.addConstraint(FLayoutConstraint.constantConstraint(view: loginButton, attribute: .height, value: 40))
     }
 }
