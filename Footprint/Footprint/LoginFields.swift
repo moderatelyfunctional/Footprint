@@ -21,7 +21,6 @@ class LoginFields: UIView {
         self.addSubview(self.emailField)
         self.addSubview(self.passwordField)
         self.addSubview(self.loginButton)
-
         addConstraints()
     }
     
@@ -30,8 +29,14 @@ class LoginFields: UIView {
     }
         
     func addConstraints() {
+        self.view.addConstraint(FLayoutConstraint.paddingPositionConstraint(view: emailField, side: .top, padding: 0))
+        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: emailField, sides: [.left, .right], padding: 40))
+        self.view.addConstraint(FLayoutConstraint.verticalSpacingConstraint(upperView: emailField, lowerView: passwordField, spacing: 10))
+        
+        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: passwordField, sides: [.left, .right], padding: 40))
+        self.view.addConstraint(FLayoutConstraint.verticalSpacingConstraint(upperView: passwordField, lowerView: loginButton, spacing: 50))
+        
         self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: loginButton, sides: [.left, .right, .bottom], padding: 40))
         self.view.addConstraint(FLayoutConstraint.constantConstraint(view: loginButton, attribute: .height, value: 40))
-
     }
 }

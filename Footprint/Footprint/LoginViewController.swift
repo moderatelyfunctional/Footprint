@@ -10,13 +10,29 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    let loginField = LoginField()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         setupBackground()
         setupTitle()
-        setupButtons()
+        setupLoginField()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(notification:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(notification:)), name: .UIKeyboardWillHide, object: nil)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
 
     func setupBackground() {
@@ -42,14 +58,9 @@ class LoginViewController: UIViewController {
         self.view.addConstraint(FLayoutConstraint.horizontalAlignConstraint(firstView: self.view, secondView: loginLabel))
     }
 
-    func setupButtons() {
-        let emailField = AutoTextField(placeholder: "Email" textColor: UIColor.black, backgroundColor: UIColor.white)
-        let passwordField = AutoTextField(placeholder: "Password" textColor: UIColor.black, backgroundColor: UIColor.white)
-        let loginButton = AutoButton(text: "Log In", titleColor: UIColor.white, backgroundColor: LoginVC.primaryGreen)
-        
-        self.view.addSubview(loginButton)
-        self.view.addSubview(emailField)
-        self.view.addSubview(passwordField)
+    func setupLoginField() {
+        self.view.addSubview(self.loginField)
+        self.view.addConstraints(FlayoutConstraint.paddingPositionConstraints(view: self.loginField, sides: [.left, .bottom, .right], padding: 0))
     }
     
 }
