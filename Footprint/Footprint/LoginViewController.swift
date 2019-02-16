@@ -10,7 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    let loginField = LoginField()
+    let loginField = LoginFields()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,15 +24,23 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(notification:)), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(notification:)), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillAppear(notification:)), name: UIResponder.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillDisappear(notification:)), name: UIResponder.UIKeyboardWillHide, object: nil)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillAppear(notification: NSNotification?) {
+        
+    }
+
+    @objc func keyboardWillDisappear(notification: NSNotification?) {
+        
     }
 
     func setupBackground() {
@@ -60,8 +68,6 @@ class LoginViewController: UIViewController {
 
     func setupLoginField() {
         self.view.addSubview(self.loginField)
-        self.view.addConstraints(FlayoutConstraint.paddingPositionConstraints(view: self.loginField, sides: [.left, .bottom, .right], padding: 0))
+        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: self.loginField, sides: [.left, .bottom, .right], padding: 0))
     }
-    
 }
-

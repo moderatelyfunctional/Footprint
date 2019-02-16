@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1B4C4E68EB9465D16B85E428 /* libPods-Footprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D3F2F5C42868627AEA42A4 /* libPods-Footprint.a */; };
 		DCABB6B12217B10C00BF5A80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6B02217B10C00BF5A80 /* AppDelegate.swift */; };
-		DCABB6B32217B10C00BF5A80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6B22217B10C00BF5A80 /* LoginViewController.swift */; };
 		DCABB6B82217B10E00BF5A80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCABB6B72217B10E00BF5A80 /* Assets.xcassets */; };
 		DCABB6BB2217B10E00BF5A80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCABB6B92217B10E00BF5A80 /* LaunchScreen.storyboard */; };
 		DCABB6C32217CCB700BF5A80 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6C22217CCB700BF5A80 /* Constants.swift */; };
@@ -19,6 +18,8 @@
 		DCABB6CB2217DA0B00BF5A80 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6CA2217DA0B00BF5A80 /* MapsViewController.swift */; };
 		DCABB6CE2217F8C700BF5A80 /* AutoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6CD2217F8C700BF5A80 /* AutoTextField.swift */; };
 		DCABB6D02217F8D300BF5A80 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6CF2217F8D300BF5A80 /* ColorExtensions.swift */; };
+		DCABB6D22218038E00BF5A80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6D12218038E00BF5A80 /* LoginViewController.swift */; };
+		DCABB6D4221803A100BF5A80 /* LoginFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6D3221803A100BF5A80 /* LoginFields.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +28,6 @@
 		BE1D9A7ACD4011E27B502961 /* Pods-Footprint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Footprint.debug.xcconfig"; path = "Target Support Files/Pods-Footprint/Pods-Footprint.debug.xcconfig"; sourceTree = "<group>"; };
 		DCABB6AD2217B10C00BF5A80 /* Footprint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Footprint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCABB6B02217B10C00BF5A80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DCABB6B22217B10C00BF5A80 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DCABB6B72217B10E00BF5A80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCABB6BA2217B10E00BF5A80 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DCABB6BC2217B10E00BF5A80 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -38,6 +38,8 @@
 		DCABB6CA2217DA0B00BF5A80 /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 		DCABB6CD2217F8C700BF5A80 /* AutoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoTextField.swift; sourceTree = "<group>"; };
 		DCABB6CF2217F8D300BF5A80 /* ColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		DCABB6D12218038E00BF5A80 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Footprint/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		DCABB6D3221803A100BF5A80 /* LoginFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFields.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				DCABB6C62217CEFF00BF5A80 /* AutoLabel.swift */,
 				DCABB6C82217D2EE00BF5A80 /* AutoButton.swift */,
 				DCABB6CD2217F8C700BF5A80 /* AutoTextField.swift */,
+				DCABB6D3221803A100BF5A80 /* LoginFields.swift */,
 				DCABB6CC2217DA2600BF5A80 /* ViewControllers */,
 				DCABB6B72217B10E00BF5A80 /* Assets.xcassets */,
 				DCABB6B92217B10E00BF5A80 /* LaunchScreen.storyboard */,
@@ -108,7 +111,7 @@
 		DCABB6CC2217DA2600BF5A80 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DCABB6B22217B10C00BF5A80 /* LoginViewController.swift */,
+				DCABB6D12218038E00BF5A80 /* LoginViewController.swift */,
 				DCABB6CA2217DA0B00BF5A80 /* MapsViewController.swift */,
 			);
 			path = ViewControllers;
@@ -236,13 +239,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCABB6CE2217F8C700BF5A80 /* AutoTextField.swift in Sources */,
-				DCABB6B32217B10C00BF5A80 /* LoginViewController.swift in Sources */,
 				DCABB6B12217B10C00BF5A80 /* AppDelegate.swift in Sources */,
 				DCABB6CB2217DA0B00BF5A80 /* MapsViewController.swift in Sources */,
 				DCABB6C92217D2EE00BF5A80 /* AutoButton.swift in Sources */,
+				DCABB6D4221803A100BF5A80 /* LoginFields.swift in Sources */,
 				DCABB6D02217F8D300BF5A80 /* ColorExtensions.swift in Sources */,
 				DCABB6C32217CCB700BF5A80 /* Constants.swift in Sources */,
 				DCABB6C72217CEFF00BF5A80 /* AutoLabel.swift in Sources */,
+				DCABB6D22218038E00BF5A80 /* LoginViewController.swift in Sources */,
 				DCABB6C52217CE1600BF5A80 /* FLayoutConstraints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
