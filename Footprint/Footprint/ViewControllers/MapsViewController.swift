@@ -11,6 +11,8 @@ import GoogleMaps
 
 class MapsViewController: UIViewController {
     
+    let directionsJson = ""
+    
     override func loadView() {
         // Create a GMSCameraPosition that tells the map to display the
         // coordinate -33.86,151.20 at zoom level 6.
@@ -26,15 +28,22 @@ class MapsViewController: UIViewController {
         marker.map = mapView
         
         // polylines
-        let encodedPoints = "kvkmElvvnU\\J"
-        let path: GMSPath = GMSPath(fromEncodedPath: encodedPoints)!
-        let routePolyline = GMSPolyline(path: path)
-        routePolyline.map = mapView
-        
+        let encodedPoints = ["kvkmElvvnU\\J", "mukmExvvnUH@H@JDJHNJJJPTN\\Lb@B`@?h@@v@DdYZ?R?" ]
         var bounds = GMSCoordinateBounds()
-        
-        for index in 1...path.count() {
-            bounds = bounds.includingCoordinate(path.coordinate(at: index))
+
+        for encoding in encodedPoints {
+            let path: GMSPath = GMSPath(fromEncodedPath: encoding)!
+            let routePolyline = GMSPolyline(path: path)
+            routePolyline.strokeWidth = 50
+            routePolyline.strokeColor = UIColor.red
+            
+            routePolyline.map = mapView
+            
+            
+            
+            for index in 1...path.count() {
+                bounds = bounds.includingCoordinate(path.coordinate(at: index))
+            }
         }
         mapView.animate(with: GMSCameraUpdate.fit(bounds))
         
