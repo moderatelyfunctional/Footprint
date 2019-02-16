@@ -25,6 +25,13 @@ class AutoTextField: UITextField {
         self.backgroundColor = backgroundColor   
     }
     
+    convenience init(placeholder: String, textColor: UIColor, backgroundColor: UIColor, borderColor: UIColor) {
+        self.init(placeholder: placeholder, textColor: textColor, backgroundColor: backgroundColor)
+        
+        self.layer.borderColor = borderColor.cgColor
+        self.layer.borderWidth = 0.5
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

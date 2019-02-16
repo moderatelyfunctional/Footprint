@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B4C4E68EB9465D16B85E428 /* libPods-Footprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D3F2F5C42868627AEA42A4 /* libPods-Footprint.a */; };
+		DC88C32722186868008AA93A /* DismissViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C32622186868008AA93A /* DismissViewController.swift */; };
 		DCABB6B12217B10C00BF5A80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6B02217B10C00BF5A80 /* AppDelegate.swift */; };
 		DCABB6B82217B10E00BF5A80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCABB6B72217B10E00BF5A80 /* Assets.xcassets */; };
 		DCABB6BB2217B10E00BF5A80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCABB6B92217B10E00BF5A80 /* LaunchScreen.storyboard */; };
@@ -19,16 +20,19 @@
 		DCABB6CE2217F8C700BF5A80 /* AutoTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6CD2217F8C700BF5A80 /* AutoTextField.swift */; };
 		DCABB6D02217F8D300BF5A80 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6CF2217F8D300BF5A80 /* ColorExtensions.swift */; };
 		DCABB6D4221803A100BF5A80 /* LoginFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6D3221803A100BF5A80 /* LoginFields.swift */; };
-		DCABB6D6221807AA00BF5A80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6D5221807AA00BF5A80 /* LoginViewController.swift */; };
 		DCABB6D8221809E200BF5A80 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6D7221809E200BF5A80 /* HTTP.swift */; };
 		DCF5C7DC22182B84003E9C63 /* GoogleMapsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF5C7DB22182B84003E9C63 /* GoogleMapsAPI.swift */; };
 		DCF5C7DE22185467003E9C63 /* GoogleMapsDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF5C7DD22185467003E9C63 /* GoogleMapsDecoder.swift */; };
+		DCF5C7E0221857FD003E9C63 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF5C7DF221857FD003E9C63 /* LoginViewController.swift */; };
+		DCF5C7E222185809003E9C63 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF5C7E122185809003E9C63 /* HomeViewController.swift */; };
+		DCF5C7E422185819003E9C63 /* FPServerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF5C7E322185819003E9C63 /* FPServerAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1C647F74F6748E78DA9C3589 /* Pods-Footprint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Footprint.release.xcconfig"; path = "Target Support Files/Pods-Footprint/Pods-Footprint.release.xcconfig"; sourceTree = "<group>"; };
 		51D3F2F5C42868627AEA42A4 /* libPods-Footprint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Footprint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE1D9A7ACD4011E27B502961 /* Pods-Footprint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Footprint.debug.xcconfig"; path = "Target Support Files/Pods-Footprint/Pods-Footprint.debug.xcconfig"; sourceTree = "<group>"; };
+		DC88C32622186868008AA93A /* DismissViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissViewController.swift; sourceTree = "<group>"; };
 		DCABB6AD2217B10C00BF5A80 /* Footprint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Footprint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCABB6B02217B10C00BF5A80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCABB6B72217B10E00BF5A80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -42,10 +46,12 @@
 		DCABB6CD2217F8C700BF5A80 /* AutoTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoTextField.swift; sourceTree = "<group>"; };
 		DCABB6CF2217F8D300BF5A80 /* ColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		DCABB6D3221803A100BF5A80 /* LoginFields.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginFields.swift; sourceTree = "<group>"; };
-		DCABB6D5221807AA00BF5A80 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Footprint/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		DCABB6D7221809E200BF5A80 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HTTP.swift; path = Footprint/HTTP.swift; sourceTree = SOURCE_ROOT; };
 		DCF5C7DB22182B84003E9C63 /* GoogleMapsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsAPI.swift; sourceTree = "<group>"; };
 		DCF5C7DD22185467003E9C63 /* GoogleMapsDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsDecoder.swift; sourceTree = "<group>"; };
+		DCF5C7DF221857FD003E9C63 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Footprint/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		DCF5C7E122185809003E9C63 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Footprint/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		DCF5C7E322185819003E9C63 /* FPServerAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPServerAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,7 @@
 				DCABB6CF2217F8D300BF5A80 /* ColorExtensions.swift */,
 				DCABB6C42217CE1600BF5A80 /* FLayoutConstraints.swift */,
 				DCABB6D7221809E200BF5A80 /* HTTP.swift */,
+				DCF5C7E322185819003E9C63 /* FPServerAPI.swift */,
 				DCF5C7DB22182B84003E9C63 /* GoogleMapsAPI.swift */,
 				DCF5C7DD22185467003E9C63 /* GoogleMapsDecoder.swift */,
 				DCABB6C62217CEFF00BF5A80 /* AutoLabel.swift */,
@@ -120,7 +127,9 @@
 		DCABB6CC2217DA2600BF5A80 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DCABB6D5221807AA00BF5A80 /* LoginViewController.swift */,
+				DC88C32622186868008AA93A /* DismissViewController.swift */,
+				DCF5C7E122185809003E9C63 /* HomeViewController.swift */,
+				DCF5C7DF221857FD003E9C63 /* LoginViewController.swift */,
 				DCABB6CA2217DA0B00BF5A80 /* MapsViewController.swift */,
 			);
 			path = ViewControllers;
@@ -247,10 +256,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCF5C7E0221857FD003E9C63 /* LoginViewController.swift in Sources */,
+				DC88C32722186868008AA93A /* DismissViewController.swift in Sources */,
 				DCABB6CE2217F8C700BF5A80 /* AutoTextField.swift in Sources */,
 				DCF5C7DE22185467003E9C63 /* GoogleMapsDecoder.swift in Sources */,
 				DCABB6B12217B10C00BF5A80 /* AppDelegate.swift in Sources */,
 				DCF5C7DC22182B84003E9C63 /* GoogleMapsAPI.swift in Sources */,
+				DCF5C7E222185809003E9C63 /* HomeViewController.swift in Sources */,
 				DCABB6CB2217DA0B00BF5A80 /* MapsViewController.swift in Sources */,
 				DCABB6C92217D2EE00BF5A80 /* AutoButton.swift in Sources */,
 				DCABB6D8221809E200BF5A80 /* HTTP.swift in Sources */,
@@ -259,7 +271,7 @@
 				DCABB6C32217CCB700BF5A80 /* Constants.swift in Sources */,
 				DCABB6C72217CEFF00BF5A80 /* AutoLabel.swift in Sources */,
 				DCABB6C52217CE1600BF5A80 /* FLayoutConstraints.swift in Sources */,
-				DCABB6D6221807AA00BF5A80 /* LoginViewController.swift in Sources */,
+				DCF5C7E422185819003E9C63 /* FPServerAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

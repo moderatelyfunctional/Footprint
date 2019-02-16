@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class LoginViewController: UIViewController {
+class LoginViewController: DismissViewController {
 
     let loginField = LoginFields()
     var loginBottomConstraint:NSLayoutConstraint!
@@ -50,11 +50,17 @@ class LoginViewController: UIViewController {
             keyboardHeight = keyboardFrame.cgRectValue.height
         }
         
-        self.loginBottomConstraint.constant = -keyboardHeight
+        UIView.animate(withDuration: 4) {
+            self.loginBottomConstraint.constant = -keyboardHeight
+            self.view.layoutIfNeeded()
+        }
     }
 
     @objc func keyboardWillDisappear(notification: NSNotification?) {
-        self.loginBottomConstraint.constant = 0
+        UIView.animate(withDuration: 4) {
+            self.loginBottomConstraint.constant = 0
+            self.view.layoutIfNeeded()
+        }
     }
 
     func setupBackground() {
@@ -89,38 +95,35 @@ class LoginViewController: UIViewController {
     }
 
     func setupLoginListeners() {
-        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-
         self.loginField.loginButton.addTarget(self, action: #selector(LoginViewController.postLoginUser), for: .touchUpInside)
-    }
-
-    @objc func dismissKeyboard() {
-        self.view.endEditing(true)
     }
 
     @objc func postLoginUser() {
         let email = self.loginField.emailField.text
         let password = self.loginField.passwordField.text
-        print("email \(email) password \(password)")
-
-        return
 
         var params:Parameters = [:]
-        params["email"] = email
-        params["password"] = password
+        params["email"] = "matthew@gmail.com"
+        params["password"] = "footprint"
+//        params["email"] = email
+//        params["password"] = password
         
-        AF.request(FPServerAPI.signupURL, params: params, method: .post, encoding: JSONEncoding.default).responseJSON {
-            response in
-            print(response.request)
-
-            if (response.status == 200) {
+        AF.request(FPServerAPI.loginURL, method: .post, parameters: params).responseJSON {
+            responseData in
+            
+            if (responseData.response?.statusCode == 200) {
+                let data = responseData.result.value
+                let JSON = data as! NSDictionary
+                let userID = ((JSON.object(forKey: "success")) as! NSNumber).intValue
+                UserInfo.userID = userID
+                
                 let homeViewController = HomeViewController()
-                self.presentViewController(homeViewController, animated: true, completion: nil)
+                self.present(homeViewController, animated: true, completion: nil)
             }
+
         }
         
     }
 
 }
-f
+
