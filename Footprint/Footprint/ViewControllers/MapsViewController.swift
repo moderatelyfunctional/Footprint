@@ -102,11 +102,13 @@ class MapsViewController: UIViewController {
     
     // Add a button to the view.
     func makeButton() {
-        let btnLaunchAc = UIButton(frame: CGRect(x: 5, y: 150, width: 300, height: 35))
-        btnLaunchAc.backgroundColor = .blue
-        btnLaunchAc.setTitle("Launch autocomplete", for: .normal)
-        btnLaunchAc.addTarget(self, action: #selector(autocompleteClicked), for: .touchUpInside)
-        self.view.addSubview(btnLaunchAc)
+        let whereToBtn = AutoButton(text: "Where To?", titleColor: UIColor.black, backgroundColor: UIColor.white)
+        whereToBtn.addTarget(self, action: #selector(autocompleteClicked), for: .touchUpInside)
+        self.view.addSubview(whereToBtn)
+        
+        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: whereToBtn, sides: [.left, .right], padding: 30))
+        self.view.addConstraint(FLayoutConstraint.paddingPositionConstraint(view: whereToBtn, side: .top, padding: 70))
+        self.view.addConstraint(FLayoutConstraint.constantConstraint(view: whereToBtn, attribute: .height, value: 40))
     }
     
 }

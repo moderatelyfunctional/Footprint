@@ -114,11 +114,11 @@ class LoginViewController: DismissViewController {
             if (responseData.response?.statusCode == 200) {
                 let data = responseData.result.value
                 let JSON = data as! NSDictionary
-                let userID = ((JSON.object(forKey: "success")) as! NSNumber).intValue
+                let userID = ((JSON.object(forKey: "user")) as! NSNumber).intValue
                 UserInfo.userID = userID
                 
-                let homeViewController = HomeViewController()
-                self.present(homeViewController, animated: true, completion: nil)
+                let mapsViewController = MapsViewController()
+                self.present(mapsViewController, animated: true, completion: nil)
             }
 
         }
