@@ -19,6 +19,7 @@ struct LoginVC {
 struct UserInfo {
     
     static var userID:Int = -1
+    static var currPosition:(Double, Double) = (37.33233141, -122.031218)
     
 }
 

@@ -10,6 +10,7 @@
 		1B4C4E68EB9465D16B85E428 /* libPods-Footprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D3F2F5C42868627AEA42A4 /* libPods-Footprint.a */; };
 		DC88C32722186868008AA93A /* DismissViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C32622186868008AA93A /* DismissViewController.swift */; };
 		DC88C3292218719C008AA93A /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C3282218719C008AA93A /* PlacesViewController.swift */; };
+		DC88C32B2218A334008AA93A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC88C32A2218A334008AA93A /* CoreLocation.framework */; };
 		DCABB6B12217B10C00BF5A80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6B02217B10C00BF5A80 /* AppDelegate.swift */; };
 		DCABB6B82217B10E00BF5A80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCABB6B72217B10E00BF5A80 /* Assets.xcassets */; };
 		DCABB6BB2217B10E00BF5A80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCABB6B92217B10E00BF5A80 /* LaunchScreen.storyboard */; };
@@ -35,6 +36,7 @@
 		BE1D9A7ACD4011E27B502961 /* Pods-Footprint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Footprint.debug.xcconfig"; path = "Target Support Files/Pods-Footprint/Pods-Footprint.debug.xcconfig"; sourceTree = "<group>"; };
 		DC88C32622186868008AA93A /* DismissViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissViewController.swift; sourceTree = "<group>"; };
 		DC88C3282218719C008AA93A /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
+		DC88C32A2218A334008AA93A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DCABB6AD2217B10C00BF5A80 /* Footprint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Footprint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCABB6B02217B10C00BF5A80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCABB6B72217B10E00BF5A80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC88C32B2218A334008AA93A /* CoreLocation.framework in Frameworks */,
 				1B4C4E68EB9465D16B85E428 /* libPods-Footprint.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +74,7 @@
 		4E0A668C4FE91598F9733991 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC88C32A2218A334008AA93A /* CoreLocation.framework */,
 				51D3F2F5C42868627AEA42A4 /* libPods-Footprint.a */,
 			);
 			name = Frameworks;
