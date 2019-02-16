@@ -16,14 +16,22 @@ class MapsViewController: UIViewController {
         // coordinate -33.86,151.20 at zoom level 6.
         let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
         let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: 100, height: 100), camera: camera)
-        self.view.addSubview(mapView)
+        self.view = mapView
         
         // Creates a marker in the center of the map.
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
+        marker.position = CLLocationCoordinate2D(latitude: 33.8162219, longitude: -117.9224731)
         marker.title = "Sydney"
         marker.snippet = "Australia"
         marker.map = mapView
+        
+        // polylines
+        let encodedPoints = "kvkmElvvnU\\J"
+        
+        
+        let topView = UIView(frame: CGRect(x: 0, y: 1, width: 100, height: 100))
+        topView.backgroundColor = UIColor.red
+        self.view.addSubview(topView)
     }
     
     override func viewDidLoad() {
