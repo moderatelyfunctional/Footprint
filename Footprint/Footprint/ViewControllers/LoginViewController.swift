@@ -43,8 +43,8 @@ class LoginViewController: UIViewController {
     }
 
     func setupButtons() {
-        let emailField = AutoTextField(placeholder: "Email" textColor: UIColor.black, backgroundColor: UIColor.white)
-        let passwordField = AutoTextField(placeholder: "Password" textColor: UIColor.black, backgroundColor: UIColor.white)
+        let emailField = AutoTextField(placeholder: "Email", textColor: UIColor.black, backgroundColor: UIColor.white)
+        let passwordField = AutoTextField(placeholder: "Password", textColor: UIColor.black, backgroundColor: UIColor.white)
         let loginButton = AutoButton(text: "Log In", titleColor: UIColor.white, backgroundColor: LoginVC.primaryGreen)
         
         self.view.addSubview(loginButton)
@@ -53,6 +53,11 @@ class LoginViewController: UIViewController {
         
         self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: loginButton, sides: [.left, .right, .bottom], padding: 40))
         self.view.addConstraint(FLayoutConstraint.constantConstraint(view: loginButton, attribute: .height, value: 40))
+        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: emailField, sides: [.left, .right], padding: 40))
+        
+        
+        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: passwordField, sides: [.left, .right], padding: 40))
+
     }
     
 }
