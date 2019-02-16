@@ -16,6 +16,12 @@ struct LoginVC {
     static let textFieldWhite:UIColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.85)
 }
 
+struct TripDetails {
+    
+    static let size:CGSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.35)
+    
+}
+
 struct UserInfo {
     
     static var userID:Int = -1

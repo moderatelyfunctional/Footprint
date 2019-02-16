@@ -13,6 +13,7 @@ import Alamofire
 
 class MapsViewController: UIViewController {
 
+    let tripScrollView = TripScrollView()
 
     func updateMap(place: GMSPlace) {
         let camera = GMSCameraPosition.camera(withLatitude: UserInfo.currPosition.0, longitude: UserInfo.currPosition.1, zoom: 6.0)
@@ -29,13 +30,7 @@ class MapsViewController: UIViewController {
         
         AF.request(google_url, method: .post, encoding: JSONEncoding.default).responseJSON {
             response in
-            print(response.request)
-            
-            debugPrint(response)
-            
             let directions = try? JSONDecoder().decode(Directions.self, from: response.data!)
-            
-            debugPrint(directions)
             
             // Creates a marker in the center of the map.
             let marker = GMSMarker()
@@ -81,6 +76,30 @@ class MapsViewController: UIViewController {
         self.makeButton()
     }
     
+    // Add a button to the view.
+    func makeButton() {
+        let whereToBtn = AutoButton(text: "Where To?", titleColor: UIColor.black, backgroundColor: UIColor.white)
+        whereToBtn.addTarget(self, action: #selector(autocompleteClicked), for: .touchUpInside)
+        self.view.addSubview(whereToBtn)
+        
+        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: whereToBtn, sides: [.left, .right], padding: 30))
+        self.view.addConstraint(FLayoutConstraint.paddingPositionConstraint(view: whereToBtn, side: .top, padding: 70))
+        self.view.addConstraint(FLayoutConstraint.constantConstraint(view: whereToBtn, attribute: .height, value: 40))
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.addSubview(self.tripScrollView)
+        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: self.tripScrollView, sides: [.left, .bottom, .right], padding: 0))
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
     // Present the Autocomplete view controller when the button is pressed.
     @objc func autocompleteClicked(_ sender: UIButton) {
         let autocompleteController = GMSAutocompleteViewController()
@@ -100,26 +119,12 @@ class MapsViewController: UIViewController {
         present(autocompleteController, animated: true, completion: nil)
     }
     
-    // Add a button to the view.
-    func makeButton() {
-        let whereToBtn = AutoButton(text: "Where To?", titleColor: UIColor.black, backgroundColor: UIColor.white)
-        whereToBtn.addTarget(self, action: #selector(autocompleteClicked), for: .touchUpInside)
-        self.view.addSubview(whereToBtn)
-        
-        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: whereToBtn, sides: [.left, .right], padding: 30))
-        self.view.addConstraint(FLayoutConstraint.paddingPositionConstraint(view: whereToBtn, side: .top, padding: 70))
-        self.view.addConstraint(FLayoutConstraint.constantConstraint(view: whereToBtn, attribute: .height, value: 40))
-    }
-    
 }
 
 extension MapsViewController: GMSAutocompleteViewControllerDelegate {
     
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        print("Place name: \(place.name)")
-        print("Place ID: \(place.placeID)")
-        print("Place attributions: \(place.attributions)")
         dismiss(animated: true, completion: nil)
         updateMap(place: place)
     }

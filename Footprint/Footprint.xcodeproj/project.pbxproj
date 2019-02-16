@@ -11,6 +11,8 @@
 		DC88C32722186868008AA93A /* DismissViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C32622186868008AA93A /* DismissViewController.swift */; };
 		DC88C3292218719C008AA93A /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C3282218719C008AA93A /* PlacesViewController.swift */; };
 		DC88C32B2218A334008AA93A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC88C32A2218A334008AA93A /* CoreLocation.framework */; };
+		DC88C32D2218C518008AA93A /* TripScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C32C2218C518008AA93A /* TripScrollView.swift */; };
+		DC88C32F2218CB8E008AA93A /* AutoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C32E2218CB8E008AA93A /* AutoView.swift */; };
 		DCABB6B12217B10C00BF5A80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6B02217B10C00BF5A80 /* AppDelegate.swift */; };
 		DCABB6B82217B10E00BF5A80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCABB6B72217B10E00BF5A80 /* Assets.xcassets */; };
 		DCABB6BB2217B10E00BF5A80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCABB6B92217B10E00BF5A80 /* LaunchScreen.storyboard */; };
@@ -37,6 +39,8 @@
 		DC88C32622186868008AA93A /* DismissViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissViewController.swift; sourceTree = "<group>"; };
 		DC88C3282218719C008AA93A /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		DC88C32A2218A334008AA93A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		DC88C32C2218C518008AA93A /* TripScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TripScrollView.swift; path = Footprint/TripScrollView.swift; sourceTree = SOURCE_ROOT; };
+		DC88C32E2218CB8E008AA93A /* AutoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoView.swift; sourceTree = "<group>"; };
 		DCABB6AD2217B10C00BF5A80 /* Footprint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Footprint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCABB6B02217B10C00BF5A80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCABB6B72217B10E00BF5A80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -119,9 +123,11 @@
 				DCF5C7DB22182B84003E9C63 /* GoogleMapsAPI.swift */,
 				DCF5C7DD22185467003E9C63 /* GoogleMapsDecoder.swift */,
 				DCABB6C62217CEFF00BF5A80 /* AutoLabel.swift */,
+				DC88C32E2218CB8E008AA93A /* AutoView.swift */,
 				DCABB6C82217D2EE00BF5A80 /* AutoButton.swift */,
 				DCABB6CD2217F8C700BF5A80 /* AutoTextField.swift */,
 				DCABB6D3221803A100BF5A80 /* LoginFields.swift */,
+				DC88C32C2218C518008AA93A /* TripScrollView.swift */,
 				DCABB6CC2217DA2600BF5A80 /* ViewControllers */,
 				DCABB6B72217B10E00BF5A80 /* Assets.xcassets */,
 				DCABB6B92217B10E00BF5A80 /* LaunchScreen.storyboard */,
@@ -266,6 +272,7 @@
 				DCF5C7E0221857FD003E9C63 /* LoginViewController.swift in Sources */,
 				DC88C32722186868008AA93A /* DismissViewController.swift in Sources */,
 				DCABB6CE2217F8C700BF5A80 /* AutoTextField.swift in Sources */,
+				DC88C32F2218CB8E008AA93A /* AutoView.swift in Sources */,
 				DCF5C7DE22185467003E9C63 /* GoogleMapsDecoder.swift in Sources */,
 				DCABB6B12217B10C00BF5A80 /* AppDelegate.swift in Sources */,
 				DCF5C7DC22182B84003E9C63 /* GoogleMapsAPI.swift in Sources */,
@@ -277,6 +284,7 @@
 				DCABB6D4221803A100BF5A80 /* LoginFields.swift in Sources */,
 				DCABB6D02217F8D300BF5A80 /* ColorExtensions.swift in Sources */,
 				DCABB6C32217CCB700BF5A80 /* Constants.swift in Sources */,
+				DC88C32D2218C518008AA93A /* TripScrollView.swift in Sources */,
 				DCABB6C72217CEFF00BF5A80 /* AutoLabel.swift in Sources */,
 				DCABB6C52217CE1600BF5A80 /* FLayoutConstraints.swift in Sources */,
 				DCF5C7E422185819003E9C63 /* FPServerAPI.swift in Sources */,
