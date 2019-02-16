@@ -11,6 +11,7 @@ import UIKit
 class LoginViewController: UIViewController {
 
     let loginField = LoginFields()
+    var loginBottomConstraint:NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,7 @@ class LoginViewController: UIViewController {
         setupBackground()
         setupTitle()
         setupLoginField()
+        setupLoginListeners()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -36,11 +38,23 @@ class LoginViewController: UIViewController {
     }
     
     @objc func keyboardWillAppear(notification: NSNotification?) {
-        
+        guard let keyboardFrame = notification?.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue else {
+            return
+        }
+
+        let keyboardHeight: CGFloat
+        if #available(iOS 11.0, *) {
+            keyboardHeight = keyboardFrame.cgRectValue.height - self.view.safeAreaInsets.bottom
+        } else {
+            keyboardHeight = keyboardFrame.cgRectValue.height
+        }
+
+        self.loginBottomConstraint.constant = keyboardHeight
+
     }
 
     @objc func keyboardWillDisappear(notification: NSNotification?) {
-        
+        self.loginBottomConstraint.constant = 0
     }
 
     func setupBackground() {
@@ -68,6 +82,25 @@ class LoginViewController: UIViewController {
 
     func setupLoginField() {
         self.view.addSubview(self.loginField)
-        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: self.loginField, sides: [.left, .bottom, .right], padding: 0))
+        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: self.loginField, sides: [.left, .right], padding: 0))
+
+        self.loginBottomConstraint = FLayoutConstraint.paddingPositionConstraint(view: self.loginField, side: .bottom, padding: 0)
+        self.view.addConstraint(self.loginBottomConstraint)
     }
+
+    func setupLoginListeners() {
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+
+        self.loginField.loginButton.addTarget(self, action: "postLoginUser", for: .touchUpInside)
+    }
+
+    func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+
+    func postLoginUser() {
+        print("Hello shoudl call this")
+    }
+
 }
