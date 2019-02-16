@@ -22,6 +22,7 @@
 		DCABB6D6221807AA00BF5A80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6D5221807AA00BF5A80 /* LoginViewController.swift */; };
 		DCABB6D8221809E200BF5A80 /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6D7221809E200BF5A80 /* HTTP.swift */; };
 		DCF5C7DC22182B84003E9C63 /* GoogleMapsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF5C7DB22182B84003E9C63 /* GoogleMapsAPI.swift */; };
+		DCF5C7DE22185467003E9C63 /* GoogleMapsDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF5C7DD22185467003E9C63 /* GoogleMapsDecoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		DCABB6D5221807AA00BF5A80 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Footprint/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
 		DCABB6D7221809E200BF5A80 /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HTTP.swift; path = Footprint/HTTP.swift; sourceTree = SOURCE_ROOT; };
 		DCF5C7DB22182B84003E9C63 /* GoogleMapsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsAPI.swift; sourceTree = "<group>"; };
+		DCF5C7DD22185467003E9C63 /* GoogleMapsDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsDecoder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				DCABB6C42217CE1600BF5A80 /* FLayoutConstraints.swift */,
 				DCABB6D7221809E200BF5A80 /* HTTP.swift */,
 				DCF5C7DB22182B84003E9C63 /* GoogleMapsAPI.swift */,
+				DCF5C7DD22185467003E9C63 /* GoogleMapsDecoder.swift */,
 				DCABB6C62217CEFF00BF5A80 /* AutoLabel.swift */,
 				DCABB6C82217D2EE00BF5A80 /* AutoButton.swift */,
 				DCABB6CD2217F8C700BF5A80 /* AutoTextField.swift */,
@@ -245,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCABB6CE2217F8C700BF5A80 /* AutoTextField.swift in Sources */,
+				DCF5C7DE22185467003E9C63 /* GoogleMapsDecoder.swift in Sources */,
 				DCABB6B12217B10C00BF5A80 /* AppDelegate.swift in Sources */,
 				DCF5C7DC22182B84003E9C63 /* GoogleMapsAPI.swift in Sources */,
 				DCABB6CB2217DA0B00BF5A80 /* MapsViewController.swift in Sources */,
