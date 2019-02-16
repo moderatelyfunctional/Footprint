@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B4C4E68EB9465D16B85E428 /* libPods-Footprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D3F2F5C42868627AEA42A4 /* libPods-Footprint.a */; };
 		DCABB6B12217B10C00BF5A80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6B02217B10C00BF5A80 /* AppDelegate.swift */; };
 		DCABB6B32217B10C00BF5A80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6B22217B10C00BF5A80 /* LoginViewController.swift */; };
 		DCABB6B82217B10E00BF5A80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCABB6B72217B10E00BF5A80 /* Assets.xcassets */; };
@@ -15,9 +16,13 @@
 		DCABB6C52217CE1600BF5A80 /* FLayoutConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6C42217CE1600BF5A80 /* FLayoutConstraints.swift */; };
 		DCABB6C72217CEFF00BF5A80 /* AutoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6C62217CEFF00BF5A80 /* AutoLabel.swift */; };
 		DCABB6C92217D2EE00BF5A80 /* AutoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6C82217D2EE00BF5A80 /* AutoButton.swift */; };
+		DCABB6CB2217DA0B00BF5A80 /* MapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6CA2217DA0B00BF5A80 /* MapsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C647F74F6748E78DA9C3589 /* Pods-Footprint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Footprint.release.xcconfig"; path = "Target Support Files/Pods-Footprint/Pods-Footprint.release.xcconfig"; sourceTree = "<group>"; };
+		51D3F2F5C42868627AEA42A4 /* libPods-Footprint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Footprint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE1D9A7ACD4011E27B502961 /* Pods-Footprint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Footprint.debug.xcconfig"; path = "Target Support Files/Pods-Footprint/Pods-Footprint.debug.xcconfig"; sourceTree = "<group>"; };
 		DCABB6AD2217B10C00BF5A80 /* Footprint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Footprint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCABB6B02217B10C00BF5A80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCABB6B22217B10C00BF5A80 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -28,6 +33,7 @@
 		DCABB6C42217CE1600BF5A80 /* FLayoutConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FLayoutConstraints.swift; sourceTree = "<group>"; };
 		DCABB6C62217CEFF00BF5A80 /* AutoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLabel.swift; sourceTree = "<group>"; };
 		DCABB6C82217D2EE00BF5A80 /* AutoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoButton.swift; sourceTree = "<group>"; };
+		DCABB6CA2217DA0B00BF5A80 /* MapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +41,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B4C4E68EB9465D16B85E428 /* libPods-Footprint.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E0A668C4FE91598F9733991 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				51D3F2F5C42868627AEA42A4 /* libPods-Footprint.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C74FE5D68FB5F27C049AF16B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BE1D9A7ACD4011E27B502961 /* Pods-Footprint.debug.xcconfig */,
+				1C647F74F6748E78DA9C3589 /* Pods-Footprint.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		DCABB6A42217B10C00BF5A80 = {
 			isa = PBXGroup;
 			children = (
 				DCABB6AF2217B10C00BF5A80 /* Footprint */,
 				DCABB6AE2217B10C00BF5A80 /* Products */,
+				C74FE5D68FB5F27C049AF16B /* Pods */,
+				4E0A668C4FE91598F9733991 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,15 +89,24 @@
 			children = (
 				DCABB6B02217B10C00BF5A80 /* AppDelegate.swift */,
 				DCABB6C22217CCB700BF5A80 /* Constants.swift */,
+				DCABB6C42217CE1600BF5A80 /* FLayoutConstraints.swift */,
 				DCABB6C62217CEFF00BF5A80 /* AutoLabel.swift */,
 				DCABB6C82217D2EE00BF5A80 /* AutoButton.swift */,
-				DCABB6C42217CE1600BF5A80 /* FLayoutConstraints.swift */,
-				DCABB6B22217B10C00BF5A80 /* LoginViewController.swift */,
+				DCABB6CC2217DA2600BF5A80 /* ViewControllers */,
 				DCABB6B72217B10E00BF5A80 /* Assets.xcassets */,
 				DCABB6B92217B10E00BF5A80 /* LaunchScreen.storyboard */,
 				DCABB6BC2217B10E00BF5A80 /* Info.plist */,
 			);
 			path = Footprint;
+			sourceTree = "<group>";
+		};
+		DCABB6CC2217DA2600BF5A80 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DCABB6B22217B10C00BF5A80 /* LoginViewController.swift */,
+				DCABB6CA2217DA0B00BF5A80 /* MapsViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,9 +116,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DCABB6BF2217B10E00BF5A80 /* Build configuration list for PBXNativeTarget "Footprint" */;
 			buildPhases = (
+				37436032F0615B7459DA1941 /* [CP] Check Pods Manifest.lock */,
 				DCABB6A92217B10C00BF5A80 /* Sources */,
 				DCABB6AA2217B10C00BF5A80 /* Frameworks */,
 				DCABB6AB2217B10C00BF5A80 /* Resources */,
+				AA1C63095A67EF7FB0323D03 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -138,6 +176,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		37436032F0615B7459DA1941 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Footprint-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AA1C63095A67EF7FB0323D03 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Footprint/Pods-Footprint-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Footprint/Pods-Footprint-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DCABB6A92217B10C00BF5A80 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -145,6 +232,7 @@
 			files = (
 				DCABB6B32217B10C00BF5A80 /* LoginViewController.swift in Sources */,
 				DCABB6B12217B10C00BF5A80 /* AppDelegate.swift in Sources */,
+				DCABB6CB2217DA0B00BF5A80 /* MapsViewController.swift in Sources */,
 				DCABB6C92217D2EE00BF5A80 /* AutoButton.swift in Sources */,
 				DCABB6C32217CCB700BF5A80 /* Constants.swift in Sources */,
 				DCABB6C72217CEFF00BF5A80 /* AutoLabel.swift in Sources */,
@@ -284,6 +372,7 @@
 		};
 		DCABB6C02217B10E00BF5A80 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE1D9A7ACD4011E27B502961 /* Pods-Footprint.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -302,6 +391,7 @@
 		};
 		DCABB6C12217B10E00BF5A80 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C647F74F6748E78DA9C3589 /* Pods-Footprint.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
