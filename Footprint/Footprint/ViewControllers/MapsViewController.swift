@@ -25,6 +25,7 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
     
     var timer = Timer()
     var autoCounter = 0
+    var stepNumber = -1
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -43,7 +44,6 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
         let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: 100, height: 100), camera: camera)
         self.view = mapView
         
-        print("\(UserInfo.currPosition.0),\(UserInfo.currPosition.1)")
         // Request for Directions
         let google_url = GoogleMapsAPI.fetchDirectionURL(
             key: "AIzaSyDVuFQ5aAu0kEucO1FM09CaC7eUvLkbxvg",
@@ -151,12 +151,9 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
         // var totalMeters = directions.routes[0].legs[0].distance.value
         let greenPath = GMSMutablePath(fromEncodedPath: (self.directions?.routes[0].overview_polyline.points)!)!
         
-        print(greenPath.length(of: GMSLengthKind.rhumb))
         while (greenPath.length(of: GMSLengthKind.rhumb) > greenMeters) {
-            print(greenPath.length(of: GMSLengthKind.rhumb))
             greenPath.removeCoordinate(at: 0)
         }
-        print(greenPath.length(of: GMSLengthKind.geodesic))
         
         if (greenPolyline != nil) {
             greenPolyline.map = nil
@@ -170,19 +167,18 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
     }
     
     @objc func startTrip() {
-        print("Calling this function")
         
-        let greenMiles = 1.0
-        let n_persons = 4
-        let car_type = "Kia"
-        
-        let steps = directions.routes[0].legs[0].steps
-        for step in steps {
+//        let greenMiles = 1.0
+//        let n_persons = 4
+//        let car_type = "Kia"
+//
+//        let steps = directions.routes[0].legs[0].steps
+//        for step in steps {
 //            if let unwrapped = step.html_instructions.removingPercentEncoding?.replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "</b>", with: "") {
 //                print(unwrapped)
 //            }
-            print(step.html_instructions.removingPercentEncoding)
-        }
+//            print(step.html_instructions.removingPercentEncoding)
+//        }
         
         if (UserInfo.userID == 7) {
             scheduledTimerWithTimeInterval()
@@ -192,13 +188,23 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
     func scheduledTimerWithTimeInterval(){
         // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
         autoCounter = 0
-        timer = Timer.scheduledTimer(timeInterval: 0.33, target: self, selector: #selector(MapsViewController.autoWalk), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(MapsViewController.autoWalk), userInfo: nil, repeats: true)
     }
     
     @objc func autoWalk() {
         // routePolyline.path
         userMarker.position = (routePolyline.path?.coordinate(at: UInt(self.autoCounter)))!
         self.autoCounter += 1
+        
+        // instruction check
+        for i in 0..<self.directions.routes[0].legs[0].steps.count {
+            if (self.stepNumber != i && GMSGeometryIsLocationOnPath(userMarker.position, GMSPath(fromEncodedPath: self.directions.routes[0].legs[0].steps[i].polyline.points)!, true)) {
+                stepNumber = i
+                if let decoded = self.directions.routes[0].legs[0].steps[i].html_instructions.removingPercentEncoding {
+                        processString(html_string: decoded)
+                }
+            }
+        }
     }
     
     // Present the Autocomplete view controller when the button is pressed.
