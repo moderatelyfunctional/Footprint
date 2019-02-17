@@ -10,7 +10,7 @@ import UIKit
 
 class TripMileView: UIView {
     
-    let textLabel = AutoLabel(text: "1.0 miles", textColor: UIColor.black)
+    let textLabel = AutoLabel(text: "1.0 mile(s)", textColor: UIColor.black)
     let iconView = UIImageView(image: UIImage(named: "miles"))
 
     let plusView = UIImageView(image: UIImage(named: "plus"))

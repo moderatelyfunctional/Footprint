@@ -41,9 +41,9 @@ class TripConfirm: UIView {
     
     func changeButtonState(enable: Bool) {
         if (enable) {
-            NSLayoutConstraint.deactivate(self.cover_constraints)
+            self.cover_view.removeFromSuperview()
         } else {
-            NSLayoutConstraint.activate(self.cover_constraints)
+            self.addSubview(self.cover_view)
         }
     }
     
