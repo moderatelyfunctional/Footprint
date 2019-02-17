@@ -23,7 +23,9 @@ class TripConfirm: UIView {
         self.backgroundColor = UIColor.white
         self.addSubview(self.confirm_button)
         self.addSubview(self.cover_view)
-        addConstraints()        
+        addConstraints()
+        
+        changeButtonState(enable: true)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -41,9 +43,9 @@ class TripConfirm: UIView {
     
     func changeButtonState(enable: Bool) {
         if (enable) {
-            NSLayoutConstraint.activate(self.cover_constraints)
-        } else {
             NSLayoutConstraint.deactivate(self.cover_constraints)
+        } else {
+            NSLayoutConstraint.activate(self.cover_constraints)
         }
     }
     

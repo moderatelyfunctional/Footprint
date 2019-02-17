@@ -16,6 +16,7 @@
 		DC88C3312218D833008AA93A /* TripMileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C3302218D833008AA93A /* TripMileView.swift */; };
 		DC88C3332218DA53008AA93A /* TripPeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C3322218DA53008AA93A /* TripPeopleView.swift */; };
 		DC88C3352218FE19008AA93A /* TripConfirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C3342218FE19008AA93A /* TripConfirm.swift */; };
+		DC88C337221902A6008AA93A /* TripCars.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C336221902A6008AA93A /* TripCars.swift */; };
 		DCABB6B12217B10C00BF5A80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6B02217B10C00BF5A80 /* AppDelegate.swift */; };
 		DCABB6B82217B10E00BF5A80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCABB6B72217B10E00BF5A80 /* Assets.xcassets */; };
 		DCABB6BB2217B10E00BF5A80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCABB6B92217B10E00BF5A80 /* LaunchScreen.storyboard */; };
@@ -47,6 +48,7 @@
 		DC88C3302218D833008AA93A /* TripMileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripMileView.swift; sourceTree = "<group>"; };
 		DC88C3322218DA53008AA93A /* TripPeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPeopleView.swift; sourceTree = "<group>"; };
 		DC88C3342218FE19008AA93A /* TripConfirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripConfirm.swift; sourceTree = "<group>"; };
+		DC88C336221902A6008AA93A /* TripCars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCars.swift; sourceTree = "<group>"; };
 		DCABB6AD2217B10C00BF5A80 /* Footprint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Footprint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCABB6B02217B10C00BF5A80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCABB6B72217B10E00BF5A80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				DC88C32C2218C518008AA93A /* TripScrollView.swift */,
 				DC88C3302218D833008AA93A /* TripMileView.swift */,
 				DC88C3342218FE19008AA93A /* TripConfirm.swift */,
+				DC88C336221902A6008AA93A /* TripCars.swift */,
 				DC88C3322218DA53008AA93A /* TripPeopleView.swift */,
 				DCABB6CC2217DA2600BF5A80 /* ViewControllers */,
 				DCABB6B72217B10E00BF5A80 /* Assets.xcassets */,
@@ -299,6 +302,7 @@
 				DC88C3332218DA53008AA93A /* TripPeopleView.swift in Sources */,
 				DCABB6C52217CE1600BF5A80 /* FLayoutConstraints.swift in Sources */,
 				DC88C3312218D833008AA93A /* TripMileView.swift in Sources */,
+				DC88C337221902A6008AA93A /* TripCars.swift in Sources */,
 				DCF5C7E422185819003E9C63 /* FPServerAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

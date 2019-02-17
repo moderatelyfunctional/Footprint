@@ -60,6 +60,7 @@ class MapsViewController: UIViewController {
             }
         }
         self.makeButton()
+        self.makeTripForm()
     }
     
     override func loadView() {
@@ -88,19 +89,25 @@ class MapsViewController: UIViewController {
         self.view.addConstraint(FLayoutConstraint.constantConstraint(view: whereToBtn, attribute: .height, value: 40))
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    func makeTripForm() {
         self.view.addSubview(self.tripScrollView)
         self.view.addSubview(self.tripConfirm)
+        
+        self.tripConfirm.confirm_button.addTarget(self, action: #selector(MapsViewController.sendTripRequest), for: .touchUpInside)
         
         self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: self.tripScrollView, sides: [.left, .right], padding: 0))
         self.view.addConstraint(FLayoutConstraint.verticalSpacingConstraint(upperView: self.tripScrollView, lowerView: self.tripConfirm, spacing: 0))
         self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: self.tripConfirm, sides: [.left, .bottom, .right], padding: 0))
+
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    @objc func sendTripRequest() {
+        print("Calling this function")
+        
+        let n_miles = 1.0
+        let n_persons = 4
+        let car_type = "Kia"
+        
     }
     
     // Present the Autocomplete view controller when the button is pressed.
