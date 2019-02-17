@@ -43,7 +43,7 @@ class TripCars: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("The car type is \(self.data[indexPath.row])")
-        self.trip_selected_delegate.selectedElement(index: 2)
+        self.trip_selected_delegate.selectedElement()
     }
     
 }

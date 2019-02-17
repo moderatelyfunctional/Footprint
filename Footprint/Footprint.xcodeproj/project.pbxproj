@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B4C4E68EB9465D16B85E428 /* libPods-Footprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D3F2F5C42868627AEA42A4 /* libPods-Footprint.a */; };
+		DC4A8CD522195FEF00C50CC1 /* GoogleSpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A8CD422195FEF00C50CC1 /* GoogleSpeech.swift */; };
 		DC88C32722186868008AA93A /* DismissViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C32622186868008AA93A /* DismissViewController.swift */; };
 		DC88C3292218719C008AA93A /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C3282218719C008AA93A /* PlacesViewController.swift */; };
 		DC88C32B2218A334008AA93A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC88C32A2218A334008AA93A /* CoreLocation.framework */; };
@@ -44,6 +45,7 @@
 		1C647F74F6748E78DA9C3589 /* Pods-Footprint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Footprint.release.xcconfig"; path = "Target Support Files/Pods-Footprint/Pods-Footprint.release.xcconfig"; sourceTree = "<group>"; };
 		51D3F2F5C42868627AEA42A4 /* libPods-Footprint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Footprint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE1D9A7ACD4011E27B502961 /* Pods-Footprint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Footprint.debug.xcconfig"; path = "Target Support Files/Pods-Footprint/Pods-Footprint.debug.xcconfig"; sourceTree = "<group>"; };
+		DC4A8CD422195FEF00C50CC1 /* GoogleSpeech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSpeech.swift; sourceTree = "<group>"; };
 		DC88C32622186868008AA93A /* DismissViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissViewController.swift; sourceTree = "<group>"; };
 		DC88C3282218719C008AA93A /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		DC88C32A2218A334008AA93A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -155,6 +157,7 @@
 				DCABB6C22217CCB700BF5A80 /* Constants.swift */,
 				DCABB6CF2217F8D300BF5A80 /* ColorExtensions.swift */,
 				DCABB6C42217CE1600BF5A80 /* FLayoutConstraints.swift */,
+				DC4A8CD422195FEF00C50CC1 /* GoogleSpeech.swift */,
 				DCABB6D7221809E200BF5A80 /* HTTP.swift */,
 				DCF5C7E322185819003E9C63 /* FPServerAPI.swift */,
 				DCF5C7DB22182B84003E9C63 /* GoogleMapsAPI.swift */,
@@ -315,6 +318,7 @@
 				DC88C32F2218CB8E008AA93A /* AutoView.swift in Sources */,
 				DCF5C7DE22185467003E9C63 /* GoogleMapsDecoder.swift in Sources */,
 				DCABB6B12217B10C00BF5A80 /* AppDelegate.swift in Sources */,
+				DC4A8CD522195FEF00C50CC1 /* GoogleSpeech.swift in Sources */,
 				DCF5C7DC22182B84003E9C63 /* GoogleMapsAPI.swift in Sources */,
 				DC88C33C22193737008AA93A /* CustomCell.swift in Sources */,
 				DCF5C7E222185809003E9C63 /* HomeViewController.swift in Sources */,

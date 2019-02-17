@@ -15,11 +15,16 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
 
     let tripScrollView = TripScrollView()
     let tripConfirm = TripConfirm()
+    let userMarker = GMSMarker()
     
     let whereToBtn = AutoButton(text: "Where To?", titleColor: UIColor.black, backgroundColor: UIColor.white)
 
     var directions: Directions!
+    var routePolyline: GMSPolyline!
     var greenPolyline: GMSPolyline!
+    
+    var timer = Timer()
+    var autoCounter = 0
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -56,24 +61,34 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
             //            marker.snippet = "Australia"
             marker.map = mapView
             
-            let marker2 = GMSMarker()
-            marker2.position = CLLocationCoordinate2D(latitude: UserInfo.currPosition.0, longitude: UserInfo.currPosition.1)
-            marker2.title = "Current Position"
+//             = GMSMarker()
+            self.userMarker.position = CLLocationCoordinate2D(latitude: UserInfo.currPosition.0, longitude: UserInfo.currPosition.1)
+            self.userMarker.title = "Current Position"
             //            marker.snippet = "Australia"
-            marker2.map = mapView
+            self.userMarker.map = mapView
             self.view = mapView
             
             var bounds = GMSCoordinateBounds()
             let path: GMSPath = GMSPath(fromEncodedPath: (self.directions?.routes[0].overview_polyline.points)!)!
-            let routePolyline = GMSPolyline(path: path)
-            routePolyline.strokeWidth = 10
-            routePolyline.strokeColor = UIColor.red
             
-            routePolyline.map = mapView
+            if (self.routePolyline != nil) {
+                self.routePolyline.map = nil
+            }
+            self.routePolyline = GMSPolyline(path: path)
+            self.routePolyline.strokeWidth = 10
+            self.routePolyline.strokeColor = UIColor.red
+            
+            self.routePolyline.map = mapView
             
             for index in 1...path.count() {
                 bounds = bounds.includingCoordinate(path.coordinate(at: index))
             }
+            
+            let northeast = self.directions.routes[0].bounds.northeast
+            let southwest = self.directions.routes[0].bounds.southwest
+            
+            bounds = bounds.includingCoordinate(CLLocationCoordinate2D(latitude: northeast.lat + 0.388 * (northeast.lat - southwest.lat), longitude: northeast.lng))
+            bounds = bounds.includingCoordinate(CLLocationCoordinate2D(latitude: southwest.lat - 0.805 * (northeast.lat - southwest.lat), longitude: southwest.lng))
             mapView.animate(with: GMSCameraUpdate.fit(bounds))
             self.updateGreenPath()
         }
@@ -88,11 +103,11 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
         // let camera = GMSCameraPosition.camera(withLatitude: selectedPlace.coordinate.latitude, longitude: selectedPlace.coordinate.longitude, zoom: 6.0)
         let mapView = GMSMapView.map(withFrame: CGRect(x: 0, y: 0, width: 100, height: 100), camera: camera)
         // Creates a marker in the center of the map.
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: UserInfo.currPosition.0, longitude: UserInfo.currPosition.1)
-        marker.title = "Current Position"
+//        let marker = GMSMarker()
+        self.userMarker.position = CLLocationCoordinate2D(latitude: UserInfo.currPosition.0, longitude: UserInfo.currPosition.1)
+        self.userMarker.title = "Current Position"
         //            marker.snippet = "Australia"
-        marker.map = mapView
+        self.userMarker.map = mapView
         self.view = mapView
         self.makeButton()
     }
@@ -111,7 +126,7 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
         self.view.addSubview(self.tripScrollView)
         self.view.addSubview(self.tripConfirm)
         
-        self.tripConfirm.confirm_button.addTarget(self, action: #selector(MapsViewController.sendTripRequest), for: .touchUpInside)
+        self.tripConfirm.confirm_button.addTarget(self, action: #selector(MapsViewController.startTrip), for: .touchUpInside)
         
         self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: self.tripScrollView, sides: [.left, .right], padding: 0))
         self.view.addConstraint(FLayoutConstraint.verticalSpacingConstraint(upperView: self.tripScrollView, lowerView: self.tripConfirm, spacing: 0))
@@ -154,7 +169,7 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
         
     }
     
-    @objc func sendTripRequest() {
+    @objc func startTrip() {
         print("Calling this function")
         
         let greenMiles = 1.0
@@ -163,10 +178,27 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
         
         let steps = directions.routes[0].legs[0].steps
         for step in steps {
-            if let unwrapped = step.html_instructions.removingPercentEncoding?.replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "</b>", with: "") {
-                print(unwrapped)
-            }
+//            if let unwrapped = step.html_instructions.removingPercentEncoding?.replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "</b>", with: "") {
+//                print(unwrapped)
+//            }
+            print(step.html_instructions.removingPercentEncoding)
         }
+        
+        if (UserInfo.userID == 7) {
+            scheduledTimerWithTimeInterval()
+        }
+    }
+    
+    func scheduledTimerWithTimeInterval(){
+        // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
+        autoCounter = 0
+        timer = Timer.scheduledTimer(timeInterval: 0.33, target: self, selector: #selector(MapsViewController.autoWalk), userInfo: nil, repeats: true)
+    }
+    
+    @objc func autoWalk() {
+        // routePolyline.path
+        userMarker.position = (routePolyline.path?.coordinate(at: UInt(self.autoCounter)))!
+        self.autoCounter += 1
     }
     
     // Present the Autocomplete view controller when the button is pressed.

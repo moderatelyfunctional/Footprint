@@ -10,6 +10,6 @@ import Foundation
 
 protocol TripSelectionProtocol {
     
-    func selectedElement(index: Int)
+    func selectedElement()
     
 }

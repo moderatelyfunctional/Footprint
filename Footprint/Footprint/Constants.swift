@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 struct LoginVC {
     
@@ -28,4 +29,3 @@ struct UserInfo {
     static var currPosition:(Double, Double) = (37.33233141, -122.031218)
     
 }
-

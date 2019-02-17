@@ -9,14 +9,14 @@
 import UIKit
 
 class TripScrollView: UIScrollView, TripSelectionProtocol {
-    
+        
     let contentView = AutoView()
     
     let firstView = TripMileView()
     let secondView = TripPeopleView()
     let thirdView = TripCars()
     
-    var selected_fields:[Bool] = [false, false, false]
+    var selected_car:Bool = false
     
     var trip_confirm_delegate:TripConfirmProtocol!
     
@@ -24,8 +24,6 @@ class TripScrollView: UIScrollView, TripSelectionProtocol {
         super.init(frame: CGRect.zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         
-        self.firstView.trip_selected_delegate = self
-        self.secondView.trip_selected_delegate = self
         self.thirdView.trip_selected_delegate = self
         
         self.backgroundColor = UIColor.white
@@ -49,15 +47,8 @@ class TripScrollView: UIScrollView, TripSelectionProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func selectedElement(index: Int) {
-        self.selected_fields[index] = true
-        var all_selected = true
-        for curr_state in self.selected_fields {
-            all_selected = all_selected && curr_state
-        }
-        if (all_selected) {
-            self.trip_confirm_delegate.confirmTrip()
-        }
+    func selectedElement() {
+        self.trip_confirm_delegate.confirmTrip()
     }
     
     func addConstraints() {
