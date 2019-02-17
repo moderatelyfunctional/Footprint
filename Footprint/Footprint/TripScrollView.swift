@@ -8,18 +8,25 @@
 
 import UIKit
 
-class TripScrollView: UIScrollView {
+class TripScrollView: UIScrollView, TripSelectionProtocol {
     
     let contentView = AutoView()
     
     let firstView = TripMileView()
     let secondView = TripPeopleView()
-    let thirdView = AutoView()
+    let thirdView = TripCars()
+    
+    var selected_fields:[Bool] = [false, false, false]
+    
+    var trip_confirm_delegate:TripConfirmProtocol!
     
     init() {
         super.init(frame: CGRect.zero)
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.thirdView.backgroundColor = UIColor.brown
+        
+        self.firstView.trip_selected_delegate = self
+        self.secondView.trip_selected_delegate = self
+        self.thirdView.trip_selected_delegate = self
         
         self.backgroundColor = UIColor.white
         self.contentSize = TripDetails.size
@@ -30,6 +37,7 @@ class TripScrollView: UIScrollView {
         self.isPagingEnabled = true
         self.isScrollEnabled = true
         
+        
         self.addSubview(self.contentView)
         self.addSubview(self.firstView)
         self.addSubview(self.secondView)
@@ -39,6 +47,17 @@ class TripScrollView: UIScrollView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func selectedElement(index: Int) {
+        self.selected_fields[index] = true
+        var all_selected = true
+        for curr_state in self.selected_fields {
+            all_selected = all_selected && curr_state
+        }
+        if (all_selected) {
+            self.trip_confirm_delegate.confirmTrip()
+        }
     }
     
     func addConstraints() {

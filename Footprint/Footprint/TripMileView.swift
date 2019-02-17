@@ -17,6 +17,9 @@ class TripMileView: UIView {
     let minusView = UIImageView(image: UIImage(named: "minus"))
     var curr_miles:Int = 10
     
+    var trip_delegate:TripChangeProtocol!
+    var trip_selected_delegate:TripSelectionProtocol!
+    
     init() {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -74,6 +77,8 @@ class TripMileView: UIView {
         }
         self.curr_miles += 2
         self.textLabel.text = "\(Double(self.curr_miles) / 10.0) mile(s)"
+        self.trip_delegate.incrementGreenPath()
+        self.trip_selected_delegate.selectedElement(index: 0)
     }
     
     @objc func decrementMile() {
@@ -82,6 +87,8 @@ class TripMileView: UIView {
         }
         self.curr_miles -= 2
         self.textLabel.text = "\(Double(self.curr_miles) / 10.0) mile(s)"
+        self.trip_delegate.decrementGreenPath()
+        self.trip_selected_delegate.selectedElement(index: 0)
     }
 
     

@@ -17,6 +17,10 @@
 		DC88C3332218DA53008AA93A /* TripPeopleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C3322218DA53008AA93A /* TripPeopleView.swift */; };
 		DC88C3352218FE19008AA93A /* TripConfirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C3342218FE19008AA93A /* TripConfirm.swift */; };
 		DC88C337221902A6008AA93A /* TripCars.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C336221902A6008AA93A /* TripCars.swift */; };
+		DC88C339221926B9008AA93A /* TripChangeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C338221926B9008AA93A /* TripChangeProtocol.swift */; };
+		DC88C33C22193737008AA93A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C33B22193737008AA93A /* CustomCell.swift */; };
+		DC88C33E22193913008AA93A /* TripSelectionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C33D22193913008AA93A /* TripSelectionProtocol.swift */; };
+		DC88C34122193C54008AA93A /* TripConfirmProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C34022193C54008AA93A /* TripConfirmProtocol.swift */; };
 		DCABB6B12217B10C00BF5A80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABB6B02217B10C00BF5A80 /* AppDelegate.swift */; };
 		DCABB6B82217B10E00BF5A80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCABB6B72217B10E00BF5A80 /* Assets.xcassets */; };
 		DCABB6BB2217B10E00BF5A80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCABB6B92217B10E00BF5A80 /* LaunchScreen.storyboard */; };
@@ -49,6 +53,10 @@
 		DC88C3322218DA53008AA93A /* TripPeopleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPeopleView.swift; sourceTree = "<group>"; };
 		DC88C3342218FE19008AA93A /* TripConfirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripConfirm.swift; sourceTree = "<group>"; };
 		DC88C336221902A6008AA93A /* TripCars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCars.swift; sourceTree = "<group>"; };
+		DC88C338221926B9008AA93A /* TripChangeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripChangeProtocol.swift; sourceTree = "<group>"; };
+		DC88C33B22193737008AA93A /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		DC88C33D22193913008AA93A /* TripSelectionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripSelectionProtocol.swift; sourceTree = "<group>"; };
+		DC88C34022193C54008AA93A /* TripConfirmProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripConfirmProtocol.swift; sourceTree = "<group>"; };
 		DCABB6AD2217B10C00BF5A80 /* Footprint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Footprint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCABB6B02217B10C00BF5A80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCABB6B72217B10E00BF5A80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,6 +109,27 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DC88C33A221936C2008AA93A /* AutoElements */ = {
+			isa = PBXGroup;
+			children = (
+				DCABB6C62217CEFF00BF5A80 /* AutoLabel.swift */,
+				DC88C32E2218CB8E008AA93A /* AutoView.swift */,
+				DCABB6C82217D2EE00BF5A80 /* AutoButton.swift */,
+				DCABB6CD2217F8C700BF5A80 /* AutoTextField.swift */,
+			);
+			path = AutoElements;
+			sourceTree = "<group>";
+		};
+		DC88C33F22193918008AA93A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DC88C33D22193913008AA93A /* TripSelectionProtocol.swift */,
+				DC88C338221926B9008AA93A /* TripChangeProtocol.swift */,
+				DC88C34022193C54008AA93A /* TripConfirmProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		DCABB6A42217B10C00BF5A80 = {
 			isa = PBXGroup;
 			children = (
@@ -130,15 +159,14 @@
 				DCF5C7E322185819003E9C63 /* FPServerAPI.swift */,
 				DCF5C7DB22182B84003E9C63 /* GoogleMapsAPI.swift */,
 				DCF5C7DD22185467003E9C63 /* GoogleMapsDecoder.swift */,
-				DCABB6C62217CEFF00BF5A80 /* AutoLabel.swift */,
-				DC88C32E2218CB8E008AA93A /* AutoView.swift */,
-				DCABB6C82217D2EE00BF5A80 /* AutoButton.swift */,
-				DCABB6CD2217F8C700BF5A80 /* AutoTextField.swift */,
+				DC88C33A221936C2008AA93A /* AutoElements */,
+				DC88C33F22193918008AA93A /* Protocols */,
 				DCABB6D3221803A100BF5A80 /* LoginFields.swift */,
 				DC88C32C2218C518008AA93A /* TripScrollView.swift */,
 				DC88C3302218D833008AA93A /* TripMileView.swift */,
 				DC88C3342218FE19008AA93A /* TripConfirm.swift */,
 				DC88C336221902A6008AA93A /* TripCars.swift */,
+				DC88C33B22193737008AA93A /* CustomCell.swift */,
 				DC88C3322218DA53008AA93A /* TripPeopleView.swift */,
 				DCABB6CC2217DA2600BF5A80 /* ViewControllers */,
 				DCABB6B72217B10E00BF5A80 /* Assets.xcassets */,
@@ -288,6 +316,7 @@
 				DCF5C7DE22185467003E9C63 /* GoogleMapsDecoder.swift in Sources */,
 				DCABB6B12217B10C00BF5A80 /* AppDelegate.swift in Sources */,
 				DCF5C7DC22182B84003E9C63 /* GoogleMapsAPI.swift in Sources */,
+				DC88C33C22193737008AA93A /* CustomCell.swift in Sources */,
 				DCF5C7E222185809003E9C63 /* HomeViewController.swift in Sources */,
 				DC88C3292218719C008AA93A /* PlacesViewController.swift in Sources */,
 				DCABB6CB2217DA0B00BF5A80 /* MapsViewController.swift in Sources */,
@@ -295,15 +324,18 @@
 				DCABB6D8221809E200BF5A80 /* HTTP.swift in Sources */,
 				DCABB6D4221803A100BF5A80 /* LoginFields.swift in Sources */,
 				DC88C3352218FE19008AA93A /* TripConfirm.swift in Sources */,
+				DC88C33E22193913008AA93A /* TripSelectionProtocol.swift in Sources */,
 				DCABB6D02217F8D300BF5A80 /* ColorExtensions.swift in Sources */,
 				DCABB6C32217CCB700BF5A80 /* Constants.swift in Sources */,
 				DC88C32D2218C518008AA93A /* TripScrollView.swift in Sources */,
 				DCABB6C72217CEFF00BF5A80 /* AutoLabel.swift in Sources */,
+				DC88C339221926B9008AA93A /* TripChangeProtocol.swift in Sources */,
 				DC88C3332218DA53008AA93A /* TripPeopleView.swift in Sources */,
 				DCABB6C52217CE1600BF5A80 /* FLayoutConstraints.swift in Sources */,
 				DC88C3312218D833008AA93A /* TripMileView.swift in Sources */,
 				DC88C337221902A6008AA93A /* TripCars.swift in Sources */,
 				DCF5C7E422185819003E9C63 /* FPServerAPI.swift in Sources */,
+				DC88C34122193C54008AA93A /* TripConfirmProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

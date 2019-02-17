@@ -17,6 +17,8 @@ class TripPeopleView: UIView {
     let minusView = UIImageView(image: UIImage(named: "minus"))
     var n_people:Int = 1
     
+    var trip_selected_delegate:TripSelectionProtocol!
+    
     init() {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -74,6 +76,7 @@ class TripPeopleView: UIView {
         }
         self.n_people += 1
         self.textLabel.text = "\(self.n_people) person(s)"
+        self.trip_selected_delegate.selectedElement(index: 1)
     }
     
     @objc func minusOne() {
@@ -82,5 +85,6 @@ class TripPeopleView: UIView {
         }
         self.n_people -= 1
         self.textLabel.text = "\(self.n_people) person(s)"
+        self.trip_selected_delegate.selectedElement(index: 1)
     }
 }

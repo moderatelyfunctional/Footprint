@@ -24,8 +24,6 @@ class TripConfirm: UIView {
         self.addSubview(self.confirm_button)
         self.addSubview(self.cover_view)
         addConstraints()
-        
-        changeButtonState(enable: true)
     }
     
     required init?(coder aDecoder: NSCoder) {

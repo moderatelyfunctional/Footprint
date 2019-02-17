@@ -11,11 +11,27 @@ import GoogleMaps
 import GooglePlaces
 import Alamofire
 
-class MapsViewController: UIViewController {
+class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProtocol {
 
     let tripScrollView = TripScrollView()
     let tripConfirm = TripConfirm()
+    
+    let whereToBtn = AutoButton(text: "Where To?", titleColor: UIColor.black, backgroundColor: UIColor.white)
 
+    var directions: Directions!
+    var greenPolyline: GMSPolyline!
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        
+        self.tripScrollView.trip_confirm_delegate = self
+        self.tripScrollView.firstView.trip_delegate = self
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func updateMap(place: GMSPlace) {
         let camera = GMSCameraPosition.camera(withLatitude: UserInfo.currPosition.0, longitude: UserInfo.currPosition.1, zoom: 6.0)
         // let camera = GMSCameraPosition.camera(withLatitude: selectedPlace.coordinate.latitude, longitude: selectedPlace.coordinate.longitude, zoom: 6.0)
@@ -31,12 +47,12 @@ class MapsViewController: UIViewController {
         
         AF.request(google_url, method: .post, encoding: JSONEncoding.default).responseJSON {
             response in
-            let directions = try? JSONDecoder().decode(Directions.self, from: response.data!)
+            self.directions = try? JSONDecoder().decode(Directions.self, from: response.data!)
             
             // Creates a marker in the center of the map.
             let marker = GMSMarker()
-            marker.position = CLLocationCoordinate2D(latitude: (directions?.routes[0].legs[0].end_location.lat)!, longitude: (directions?.routes[0].legs[0].end_location.lng)!)
-            marker.title = directions?.routes[0].legs[0].end_address
+            marker.position = CLLocationCoordinate2D(latitude: (self.directions?.routes[0].legs[0].end_location.lat)!, longitude: (self.directions?.routes[0].legs[0].end_location.lng)!)
+            marker.title = self.directions?.routes[0].legs[0].end_address
             //            marker.snippet = "Australia"
             marker.map = mapView
             
@@ -48,7 +64,7 @@ class MapsViewController: UIViewController {
             self.view = mapView
             
             var bounds = GMSCoordinateBounds()
-            let path: GMSPath = GMSPath(fromEncodedPath: (directions?.routes[0].overview_polyline.points)!)!
+            let path: GMSPath = GMSPath(fromEncodedPath: (self.directions?.routes[0].overview_polyline.points)!)!
             let routePolyline = GMSPolyline(path: path)
             routePolyline.strokeWidth = 10
             routePolyline.strokeColor = UIColor.red
@@ -58,9 +74,12 @@ class MapsViewController: UIViewController {
             for index in 1...path.count() {
                 bounds = bounds.includingCoordinate(path.coordinate(at: index))
             }
+            mapView.animate(with: GMSCameraUpdate.fit(bounds))
+            self.updateGreenPath()
         }
         self.makeButton()
         self.makeTripForm()
+
     }
     
     override func loadView() {
@@ -80,7 +99,6 @@ class MapsViewController: UIViewController {
     
     // Add a button to the view.
     func makeButton() {
-        let whereToBtn = AutoButton(text: "Where To?", titleColor: UIColor.black, backgroundColor: UIColor.white)
         whereToBtn.addTarget(self, action: #selector(autocompleteClicked), for: .touchUpInside)
         self.view.addSubview(whereToBtn)
         
@@ -98,16 +116,57 @@ class MapsViewController: UIViewController {
         self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: self.tripScrollView, sides: [.left, .right], padding: 0))
         self.view.addConstraint(FLayoutConstraint.verticalSpacingConstraint(upperView: self.tripScrollView, lowerView: self.tripConfirm, spacing: 0))
         self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: self.tripConfirm, sides: [.left, .bottom, .right], padding: 0))
-
+    }
+    
+    func incrementGreenPath() {
+        updateGreenPath()
+    }
+    
+    func decrementGreenPath() {
+        updateGreenPath()
+    }
+    
+    func confirmTrip() {
+        self.tripConfirm.changeButtonState(enable: true)
+    }
+    
+    func updateGreenPath() {
+        let greenMiles = Double(self.tripScrollView.firstView.curr_miles) / 10.0
+        let greenMeters = greenMiles * 1609.34
+        // var totalMeters = directions.routes[0].legs[0].distance.value
+        let greenPath = GMSMutablePath(fromEncodedPath: (self.directions?.routes[0].overview_polyline.points)!)!
+        
+        print(greenPath.length(of: GMSLengthKind.rhumb))
+        while (greenPath.length(of: GMSLengthKind.rhumb) > greenMeters) {
+            print(greenPath.length(of: GMSLengthKind.rhumb))
+            greenPath.removeCoordinate(at: 0)
+        }
+        print(greenPath.length(of: GMSLengthKind.geodesic))
+        
+        if (greenPolyline != nil) {
+            greenPolyline.map = nil
+        }
+        greenPolyline = GMSPolyline(path: greenPath)
+        greenPolyline.strokeWidth = 10
+        greenPolyline.strokeColor = UIColor.green
+        
+        greenPolyline.map = (self.view as! GMSMapView)
+        
     }
     
     @objc func sendTripRequest() {
         print("Calling this function")
         
-        let n_miles = 1.0
+        let greenMiles = 1.0
         let n_persons = 4
         let car_type = "Kia"
         
+        let steps = directions.routes[0].legs[0].steps
+        for step in steps {
+            if let unwrapped = step.html_instructions.removingPercentEncoding?.replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "</b>", with: "") {
+                print(unwrapped)
+            }
+        }
     }
     
     // Present the Autocomplete view controller when the button is pressed.
@@ -136,6 +195,7 @@ extension MapsViewController: GMSAutocompleteViewControllerDelegate {
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         dismiss(animated: true, completion: nil)
+        self.whereToBtn.setTitle(place.name, for: .normal)
         updateMap(place: place)
     }
     
