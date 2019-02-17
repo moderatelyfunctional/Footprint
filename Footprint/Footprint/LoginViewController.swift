@@ -103,8 +103,6 @@ class LoginViewController: DismissViewController {
         let password = self.loginField.passwordField.text
 
         var params:Parameters = [:]
-//        params["email"] = "matthew@gmail.com"
-//        params["password"] = "footprint"
         params["email"] = email
         params["password"] = password
         

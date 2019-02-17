@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		1B4C4E68EB9465D16B85E428 /* libPods-Footprint.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D3F2F5C42868627AEA42A4 /* libPods-Footprint.a */; };
 		DC4A8CD522195FEF00C50CC1 /* GoogleSpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A8CD422195FEF00C50CC1 /* GoogleSpeech.swift */; };
+		DC4A8CD722196DBC00C50CC1 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A8CD622196DBC00C50CC1 /* UserViewController.swift */; };
+		DC4A8CD92219759200C50CC1 /* Number.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A8CD82219759200C50CC1 /* Number.swift */; };
+		DC4A8CDB2219767700C50CC1 /* UserTrips.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A8CDA2219767700C50CC1 /* UserTrips.swift */; };
+		DC4A8CDD2219BBBE00C50CC1 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A8CDC2219BBBE00C50CC1 /* CommunityViewController.swift */; };
+		DC4A8CDF2219BE7900C50CC1 /* CommunityTrips.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4A8CDE2219BE7900C50CC1 /* CommunityTrips.swift */; };
 		DC88C32722186868008AA93A /* DismissViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C32622186868008AA93A /* DismissViewController.swift */; };
 		DC88C3292218719C008AA93A /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC88C3282218719C008AA93A /* PlacesViewController.swift */; };
 		DC88C32B2218A334008AA93A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC88C32A2218A334008AA93A /* CoreLocation.framework */; };
@@ -46,6 +51,11 @@
 		51D3F2F5C42868627AEA42A4 /* libPods-Footprint.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Footprint.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE1D9A7ACD4011E27B502961 /* Pods-Footprint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Footprint.debug.xcconfig"; path = "Target Support Files/Pods-Footprint/Pods-Footprint.debug.xcconfig"; sourceTree = "<group>"; };
 		DC4A8CD422195FEF00C50CC1 /* GoogleSpeech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleSpeech.swift; sourceTree = "<group>"; };
+		DC4A8CD622196DBC00C50CC1 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		DC4A8CD82219759200C50CC1 /* Number.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Number.swift; sourceTree = "<group>"; };
+		DC4A8CDA2219767700C50CC1 /* UserTrips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTrips.swift; sourceTree = "<group>"; };
+		DC4A8CDC2219BBBE00C50CC1 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
+		DC4A8CDE2219BE7900C50CC1 /* CommunityTrips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityTrips.swift; sourceTree = "<group>"; };
 		DC88C32622186868008AA93A /* DismissViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissViewController.swift; sourceTree = "<group>"; };
 		DC88C3282218719C008AA93A /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		DC88C32A2218A334008AA93A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -158,6 +168,7 @@
 				DCABB6CF2217F8D300BF5A80 /* ColorExtensions.swift */,
 				DCABB6C42217CE1600BF5A80 /* FLayoutConstraints.swift */,
 				DC4A8CD422195FEF00C50CC1 /* GoogleSpeech.swift */,
+				DC4A8CD82219759200C50CC1 /* Number.swift */,
 				DCABB6D7221809E200BF5A80 /* HTTP.swift */,
 				DCF5C7E322185819003E9C63 /* FPServerAPI.swift */,
 				DCF5C7DB22182B84003E9C63 /* GoogleMapsAPI.swift */,
@@ -170,11 +181,13 @@
 				DC88C3342218FE19008AA93A /* TripConfirm.swift */,
 				DC88C336221902A6008AA93A /* TripCars.swift */,
 				DC88C33B22193737008AA93A /* CustomCell.swift */,
+				DC4A8CDA2219767700C50CC1 /* UserTrips.swift */,
 				DC88C3322218DA53008AA93A /* TripPeopleView.swift */,
 				DCABB6CC2217DA2600BF5A80 /* ViewControllers */,
 				DCABB6B72217B10E00BF5A80 /* Assets.xcassets */,
 				DCABB6B92217B10E00BF5A80 /* LaunchScreen.storyboard */,
 				DCABB6BC2217B10E00BF5A80 /* Info.plist */,
+				DC4A8CDE2219BE7900C50CC1 /* CommunityTrips.swift */,
 			);
 			path = Footprint;
 			sourceTree = "<group>";
@@ -186,7 +199,9 @@
 				DCF5C7E122185809003E9C63 /* HomeViewController.swift */,
 				DCF5C7DF221857FD003E9C63 /* LoginViewController.swift */,
 				DCABB6CA2217DA0B00BF5A80 /* MapsViewController.swift */,
+				DC4A8CD622196DBC00C50CC1 /* UserViewController.swift */,
 				DC88C3282218719C008AA93A /* PlacesViewController.swift */,
+				DC4A8CDC2219BBBE00C50CC1 /* CommunityViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -321,6 +336,8 @@
 				DC4A8CD522195FEF00C50CC1 /* GoogleSpeech.swift in Sources */,
 				DCF5C7DC22182B84003E9C63 /* GoogleMapsAPI.swift in Sources */,
 				DC88C33C22193737008AA93A /* CustomCell.swift in Sources */,
+				DC4A8CDB2219767700C50CC1 /* UserTrips.swift in Sources */,
+				DC4A8CDF2219BE7900C50CC1 /* CommunityTrips.swift in Sources */,
 				DCF5C7E222185809003E9C63 /* HomeViewController.swift in Sources */,
 				DC88C3292218719C008AA93A /* PlacesViewController.swift in Sources */,
 				DCABB6CB2217DA0B00BF5A80 /* MapsViewController.swift in Sources */,
@@ -331,12 +348,15 @@
 				DC88C33E22193913008AA93A /* TripSelectionProtocol.swift in Sources */,
 				DCABB6D02217F8D300BF5A80 /* ColorExtensions.swift in Sources */,
 				DCABB6C32217CCB700BF5A80 /* Constants.swift in Sources */,
+				DC4A8CD722196DBC00C50CC1 /* UserViewController.swift in Sources */,
+				DC4A8CD92219759200C50CC1 /* Number.swift in Sources */,
 				DC88C32D2218C518008AA93A /* TripScrollView.swift in Sources */,
 				DCABB6C72217CEFF00BF5A80 /* AutoLabel.swift in Sources */,
 				DC88C339221926B9008AA93A /* TripChangeProtocol.swift in Sources */,
 				DC88C3332218DA53008AA93A /* TripPeopleView.swift in Sources */,
 				DCABB6C52217CE1600BF5A80 /* FLayoutConstraints.swift in Sources */,
 				DC88C3312218D833008AA93A /* TripMileView.swift in Sources */,
+				DC4A8CDD2219BBBE00C50CC1 /* CommunityViewController.swift in Sources */,
 				DC88C337221902A6008AA93A /* TripCars.swift in Sources */,
 				DCF5C7E422185819003E9C63 /* FPServerAPI.swift in Sources */,
 				DC88C34122193C54008AA93A /* TripConfirmProtocol.swift in Sources */,

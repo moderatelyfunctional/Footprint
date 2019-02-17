@@ -18,14 +18,16 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
     let userMarker = GMSMarker()
     
     let whereToBtn = AutoButton(text: "Where To?", titleColor: UIColor.black, backgroundColor: UIColor.white)
-
+    let communityBtn = UIButton(type: .custom)
+    
     var directions: Directions!
     var routePolyline: GMSPolyline!
     var greenPolyline: GMSPolyline!
     
-    var timer = Timer()
+    var timer:Timer = Timer()
     var autoCounter = 0
     var stepNumber = -1
+    var isGreen = false
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -65,6 +67,7 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
             self.userMarker.position = CLLocationCoordinate2D(latitude: UserInfo.currPosition.0, longitude: UserInfo.currPosition.1)
             self.userMarker.title = "Current Position"
             //            marker.snippet = "Australia"
+            self.userMarker.icon = UIImage(named: "car")
             self.userMarker.map = mapView
             self.view = mapView
             
@@ -94,7 +97,6 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
         }
         self.makeButton()
         self.makeTripForm()
-
     }
     
     override func loadView() {
@@ -106,6 +108,7 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
 //        let marker = GMSMarker()
         self.userMarker.position = CLLocationCoordinate2D(latitude: UserInfo.currPosition.0, longitude: UserInfo.currPosition.1)
         self.userMarker.title = "Current Position"
+        self.userMarker.icon = UIImage(named: "car")
         //            marker.snippet = "Australia"
         self.userMarker.map = mapView
         self.view = mapView
@@ -114,12 +117,27 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
     
     // Add a button to the view.
     func makeButton() {
+        communityBtn.setImage(UIImage(named: "community"), for: .normal)
+        communityBtn.addTarget(self, action: #selector(MapsViewController.displayCommunityVC), for: .touchUpInside)
+        communityBtn.translatesAutoresizingMaskIntoConstraints = false
+        
         whereToBtn.addTarget(self, action: #selector(autocompleteClicked), for: .touchUpInside)
+        
         self.view.addSubview(whereToBtn)
+        self.view.addSubview(communityBtn)
         
         self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: whereToBtn, sides: [.left, .right], padding: 30))
         self.view.addConstraint(FLayoutConstraint.paddingPositionConstraint(view: whereToBtn, side: .top, padding: 70))
         self.view.addConstraint(FLayoutConstraint.constantConstraint(view: whereToBtn, attribute: .height, value: 40))
+        
+        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: communityBtn, sides: [.top, .right], padding: 25))
+        self.view.addConstraints([FLayoutConstraint.constantConstraint(view: communityBtn, attribute: .height, value: 32),
+                                  FLayoutConstraint.constantConstraint(view: communityBtn, attribute: .width, value: 32)])
+    }
+    
+    @objc func displayCommunityVC() {
+        let communityVC = CommunityViewController()
+        self.present(communityVC, animated: true, completion: nil)
     }
     
     func makeTripForm() {
@@ -167,18 +185,9 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
     }
     
     @objc func startTrip() {
-        
-//        let greenMiles = 1.0
-//        let n_persons = 4
-//        let car_type = "Kia"
-//
-//        let steps = directions.routes[0].legs[0].steps
-//        for step in steps {
-//            if let unwrapped = step.html_instructions.removingPercentEncoding?.replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "</b>", with: "") {
-//                print(unwrapped)
-//            }
-//            print(step.html_instructions.removingPercentEncoding)
-//        }
+        self.tripScrollView.isHidden = true
+        self.tripConfirm.isHidden = true
+        self.whereToBtn.isUserInteractionEnabled = false
         
         if (UserInfo.userID == 7) {
             scheduledTimerWithTimeInterval()
@@ -188,13 +197,19 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
     func scheduledTimerWithTimeInterval(){
         // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
         autoCounter = 0
+        stepNumber = -1
+        isGreen = false
         timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(MapsViewController.autoWalk), userInfo: nil, repeats: true)
     }
     
     @objc func autoWalk() {
         // routePolyline.path
-        userMarker.position = (routePolyline.path?.coordinate(at: UInt(self.autoCounter)))!
+        userMarker.position = ((routePolyline.path?.coordinate(at: UInt(self.autoCounter)))!)
         self.autoCounter += 1
+        
+        if self.autoCounter > routePolyline.path!.count() {
+            stopTimer()
+        }
         
         // instruction check
         for i in 0..<self.directions.routes[0].legs[0].steps.count {
@@ -205,7 +220,47 @@ class MapsViewController: UIViewController, TripChangeProtocol, TripConfirmProto
                 }
             }
         }
+        
+        // green zone check
+        if (!isGreen && GMSGeometryIsLocationOnPath(userMarker.position, greenPolyline.path!, true)) {
+            isGreen = true
+            self.userMarker.icon = UIImage(named: "walking")
+            processString(html_string: "You have reached the end of the drive. You should park and continue on foot.")
+        }
     }
+    
+    func stopTimer() {
+        self.timer.invalidate()
+        
+        // execute server request
+
+        var params:Parameters = [:]
+        params["user_id"] = UserInfo.userID
+        params["start_lat"] = self.directions.routes[0].legs[0].start_location.lat
+        params["start_lon"] = self.directions.routes[0].legs[0].start_location.lng
+        params["end_lat"] = self.directions.routes[0].legs[0].end_location.lat
+        params["end_lon"] = self.directions.routes[0].legs[0].end_location.lng
+        // meters to miles
+        params["dist_traveled"] = Double(self.directions.routes[0].legs[0].distance.value) * 0.00062137273
+        params["car_id"] = self.tripScrollView.thirdView.fetchCarID()
+        // 0.1ths of miles to miles
+        params["dist_walked"] = Double(self.tripScrollView.firstView.curr_miles) * 0.1
+        
+        
+        AF.request(FPServerAPI.addURL, method: .post, parameters: params).responseJSON { responseData in
+            if (responseData.response?.statusCode == 200) {
+                let data = responseData.result.value
+                let JSON = data as! NSDictionary
+                
+                self.tripScrollView.removeFromSuperview()
+                self.tripConfirm.removeFromSuperview()
+                self.whereToBtn.isUserInteractionEnabled = true
+                let userViewController = UserViewController()
+                self.present(userViewController, animated: true, completion: nil)
+            }
+        }
+    }
+
     
     // Present the Autocomplete view controller when the button is pressed.
     @objc func autocompleteClicked(_ sender: UIButton) {

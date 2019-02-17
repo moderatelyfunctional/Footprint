@@ -16,6 +16,7 @@ class TripCars: UITableView, UITableViewDelegate, UITableViewDataSource {
         "Mercedes", "Ford" , "GM"
     ]
     var trip_selected_delegate:TripSelectionProtocol!
+    var selectedIndex = -1
     
     init() {
         super.init(frame: .zero, style: .plain)
@@ -31,6 +32,10 @@ class TripCars: UITableView, UITableViewDelegate, UITableViewDataSource {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func fetchCarID() -> Int {
+        return self.selectedIndex + 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
@@ -42,7 +47,7 @@ class TripCars: UITableView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("The car type is \(self.data[indexPath.row])")
+        self.selectedIndex = indexPath.row
         self.trip_selected_delegate.selectedElement()
     }
     

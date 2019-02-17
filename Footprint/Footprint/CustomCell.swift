@@ -12,6 +12,9 @@ class CustomCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.textLabel!.numberOfLines = 0;
+        self.textLabel!.lineBreakMode = .byWordWrapping;
     }
     
     required init?(coder aDecoder: NSCoder) {

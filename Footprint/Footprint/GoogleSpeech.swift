@@ -11,6 +11,7 @@ import AVFoundation
 let synth = AVSpeechSynthesizer()
 
 func processString(html_string: String) {
+    synth.stopSpeaking(at: AVSpeechBoundary.immediate)
     let htmlData = NSString(string: html_string).data(using: String.Encoding.unicode.rawValue)
     let options = [NSAttributedString.DocumentReadingOptionKey.documentType:
         NSAttributedString.DocumentType.html]
