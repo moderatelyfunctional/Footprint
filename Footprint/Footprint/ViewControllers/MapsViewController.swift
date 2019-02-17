@@ -14,6 +14,7 @@ import Alamofire
 class MapsViewController: UIViewController {
 
     let tripScrollView = TripScrollView()
+    let tripConfirm = TripConfirm()
 
     func updateMap(place: GMSPlace) {
         let camera = GMSCameraPosition.camera(withLatitude: UserInfo.currPosition.0, longitude: UserInfo.currPosition.1, zoom: 6.0)
@@ -91,7 +92,11 @@ class MapsViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.addSubview(self.tripScrollView)
-        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: self.tripScrollView, sides: [.left, .bottom, .right], padding: 0))
+        self.view.addSubview(self.tripConfirm)
+        
+        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: self.tripScrollView, sides: [.left, .right], padding: 0))
+        self.view.addConstraint(FLayoutConstraint.verticalSpacingConstraint(upperView: self.tripScrollView, lowerView: self.tripConfirm, spacing: 0))
+        self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: self.tripConfirm, sides: [.left, .bottom, .right], padding: 0))
     }
     
     override func viewDidAppear(_ animated: Bool) {

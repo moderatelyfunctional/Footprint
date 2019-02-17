@@ -18,7 +18,7 @@ struct LoginVC {
 
 struct TripDetails {
     
-    static let size:CGSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.35)
+    static let size:CGSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.25)
     
 }
 

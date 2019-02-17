@@ -54,7 +54,7 @@ class TripPeopleView: UIView {
         self.addConstraint(FLayoutConstraint.horizontalAlignConstraint(firstView: self.textLabel, secondView: self))
         
         self.addConstraint(FLayoutConstraint.fillYConstraints(view: self.iconView, heightRatio: 0.3))
-        self.addConstraint(FLayoutConstraint.verticalSpacingConstraint(upperView: self.textLabel, lowerView: self.iconView, spacing: 40))
+        self.addConstraint(FLayoutConstraint.verticalSpacingConstraint(upperView: self.textLabel, lowerView: self.iconView, spacing: 30))
         self.addConstraint(FLayoutConstraint.horizontalAlignConstraint(firstView: self.iconView, secondView: self))
         
         self.addConstraint(FLayoutConstraint.verticalAlignConstraint(firstView: self.minusView, secondView: self.iconView))

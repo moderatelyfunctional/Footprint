@@ -24,6 +24,8 @@ class TripScrollView: UIScrollView {
         self.backgroundColor = UIColor.white
         self.contentSize = TripDetails.size
         
+        self.showsHorizontalScrollIndicator = false
+        self.showsVerticalScrollIndicator = false
         self.isUserInteractionEnabled = true
         self.isPagingEnabled = true
         self.isScrollEnabled = true
