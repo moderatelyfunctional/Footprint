@@ -92,12 +92,10 @@ class MapsViewController: UIViewController {
         
         self.view.addSubview(self.tripScrollView)
         self.view.addConstraints(FLayoutConstraint.paddingPositionConstraints(view: self.tripScrollView, sides: [.left, .bottom, .right], padding: 0))
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
     
     // Present the Autocomplete view controller when the button is pressed.

@@ -12,15 +12,13 @@ class TripScrollView: UIScrollView {
     
     let contentView = AutoView()
     
-    let firstView = AutoView()
-    let secondView = AutoView()
+    let firstView = TripMileView()
+    let secondView = TripPeopleView()
     let thirdView = AutoView()
     
     init() {
         super.init(frame: CGRect.zero)
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.firstView.backgroundColor = UIColor.yellow
-        self.secondView.backgroundColor = UIColor.red
         self.thirdView.backgroundColor = UIColor.brown
         
         self.backgroundColor = UIColor.white
